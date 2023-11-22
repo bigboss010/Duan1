@@ -52,7 +52,19 @@
                         <div class="header-date">August 6, 2022</div>
                     </div>
                     <div class="col-md-6 col-sm-6 text-end">
-                        <div class="htop_social">
+                           
+                            <?php if (!$_SESSION) { ?>
+                                <button><a href="user/login/dangnhap.php" ><i >Đăng nhập</i></a></button>
+                                <?php if (isset($loginMess)&&$loginMess != '') {
+                                    echo $loginMess;
+                                } ?>
+                                <button><a href="user/login/dangky.php" ><i >Đăng ký</i></a></button>
+                            <?php } else { ?>
+                                <p>Hello <?=$_SESSION['Username']?></p>
+                                <button><a href="admin/index.php">Đến Admin</a></button>
+                                <button><a href="index.php?act=dangxuat">Đăng xuất</a></button>
+                            <?php  } ?>
+                                <div class="htop_social">
                             <a href="#" class="social-list__link"><i class="fa fa-facebook-f"></i></a>
                             <a href="#" class="social-list__link"><i class="fa fa-twitter"></i></a>
                             <a href="#" class="social-list__link"><i class="fa fa-instagram"></i></a>
@@ -84,7 +96,7 @@
                 <div class="collapse navbar-collapse" id="miralax_main_menu">
                     <ul class="navbar-nav menu-open">
                         <li class="menu-item-has-children current-menu-item">
-                            <a href="index.php">Home</a>
+                            <a href="index.php">Trang chủ</a>
                             <!-- <ul class="sub-menu">
                                 <li><a href="home.html">Home 01</a></li>
                                 <li><a href="index-2.html">Home 02</a></li>
@@ -92,20 +104,21 @@
                                 <li><a href="index-4.html">Home 04</a></li>
                             </ul> -->
                         </li>
-                        <li><a href="index.php?act=baiviet">Business</a></li>
+                        <li><a href="index.php?act=baiviet">Giới thiệu</a></li>
                         <!-- <li><a href="blog-category.html">Politics</a></li>
                         <li><a href="blog-category.html">Tech</a></li> -->
                         <li class="menu-item-has-children current-menu-item">
-                            <a href="#">Features</a>
+                            <a href="#">Danh mục tin tức</a>
                             <ul class="sub-menu">
-                                <li><a href="index.php?act=blog">Blog Layout</a></li>
-                                <li><a href="index.php?act=blog-category">Category Layout</a></li>
-                                <li><a href="index.php?act=blog-detail">Post Layout</a></li>
+                                <li><a href="index.php?act=blog">Phim chiếu rạp</a></li>
+                                <!-- <li><a href="index.php?act=blog">Phim chiếu rạp</a></li>
+                                <li><a href="index.php?act=blog-category">Phim truyền hình Việt Nam</a></li>
+                                <li><a href="index.php?act=blog-detail">Phim Hoa Ngữ - Hàn Quốc</a></li> -->
                             </ul>
                         </li>
-                        <li><a href="index.php?act=about">About</a></li>
+                        <!-- <li><a href="index.php?act=about">Phim Hoa Ngữ - Hàn Quốc</a></li> -->
                         <li><a href="index.php?act=goidangtin">Gói đăng tin</a></li>
-                        <li><a href="index.php?act=lienhe">Contact</a></li>
+                        <li><a href="index.php?act=lienhe">Liên hệ</a></li>
                     </ul>
                 </div>
                 <div class="nav-right-part nav-right-part-desktop">

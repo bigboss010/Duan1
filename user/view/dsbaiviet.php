@@ -2,7 +2,7 @@
         <div class="breadcrumb-area">
             <div class="row justify-content-center">
                 <div class="col-md-12">
-					<h1 class="theme-breacrumb-title">Category : Politics</h1>
+					<h1 class="theme-breacrumb-title">Giới thiệu</h1>
 				</div>
             </div>
         </div>
@@ -14,29 +14,47 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="media-post-wrap pd-bottom-80 mb-0">
-                        <div class="thumb mb-4">
-                            <img class="w-100" src="assets/img/blog/obama-1.jpg" alt="img">
-                        </div>
-                        <div class="media-body pt-1 ms-0">
-                            <a class="tag top-right tag-purple" href="#">Politics</a>
-                            <h1><a href="blog-details.html">Obama avoids crowds outside Edinburgh charity dinner.</a></h1>
-                        </div>
-                        <div class="meta d-flex">
-                            <div class="author">
-                                <div class="thumb">
-                                    <img src="assets/img/banner/user.jpg" alt="img">
-                                </div>
-                                <a href="#">Stiven Jackson</a>
-                            </div>
-                            <div class="date">
-                                <i class="fa fa-clock-o"></i>
-                                    Mar 16, 2022						
-                            </div>
-                        </div>
-                        <p class="mb-3">When working remotely and having to manage your own time, it is not uncommon for breaks to be overlooked. A new survey by the online scheduling platform Doodle confirms the US workforce’s collective neglect of breaks. 72% of US employees admit to feeling</p>
-                        <a class="btn btn-main mt-3" href="#">Read More</a>
+                        <?php
+                         $i=0;
+                         foreach ($dstt as $tt){
+                             extract($tt);
+                             $hinh =  $img_path.$HinhAnhTin;
+                             echo '
+                                 <div class="box_items_img">
+                                 <img class="w-100" src="'.$hinh.'" height="500px" alt="">
+                             </div>
+                             <h1><a href="#">'.$TieuDeTin.'</a></h1>
+                             <p >'.$NoiDungTin.'</p>
+                             <p >'.$NgayDangTin.'</p>
+                             <p >Lượt xem '.$LuotXem.'</p>
+                             <a class="btn btn-main mt-3" href="#">Read More</a>
+                                ';
+                             }
+                        // <div class="thumb mb-4">
+                        //     <img class="w-100" src="assets/img/blog/obama-1.jpg" alt="img">
+                        // </div>
+                        // <div class="media-body pt-1 ms-0">
+                        //     <a class="tag top-right tag-purple" href="#">Politics</a>
+                        //     <h1><a href="blog-details.html">Obama avoids crowds outside Edinburgh charity dinner.</a></h1>
+                        // </div>
+                        // <div class="meta d-flex">
+                        //     <div class="author">
+                        //         <div class="thumb">
+                        //             <img src="assets/img/banner/user.jpg" alt="img">
+                        //         </div>
+                        //         <a href="#">Stiven Jackson</a>
+                        //     </div>
+                        //     <div class="date">
+                        //         <i class="fa fa-clock-o"></i>
+                        //             Mar 16, 2022						
+                        //     </div>
+                        // </div>
+                        // <p class="mb-3">When working remotely and having to manage your own time, it is not uncommon for breaks to be overlooked. A new survey by the online scheduling platform Doodle confirms the US workforce’s collective neglect of breaks. 72% of US employees admit to feeling</p>
+                        // <a class="btn btn-main mt-3" href="#">Read More</a>
+                        ?>
                     </div>
-                    <div class="media-post-wrap pd-bottom-40 mb-0">
+
+                    <!-- <div class="media-post-wrap pd-bottom-40 mb-0">
                         <div class="thumb mb-4">
                             <img class="w-100" src="assets/img/blog/paper-thumb-1.jpg" alt="img">
                         </div>
@@ -113,38 +131,9 @@
                               <li class="page-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-right"></i></a></li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="col-lg-4">
-                    <div class="side-area">
-                        <div class="widget widget_search">
-                            <h5 class="widget-title">
-                                Search
-                            </h5>
-                            <div class="subscribe-inner">
-                                <input type="text">
-                                <button class="btn">Search</button>
-                            </div>
-                        </div>
-                        <div class="widget widget_list mt-5">
-                            <h4 class="widget-title">Categories</h4>
-                            <ul class="list-inner">
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Marketing</a></li>
-                                <li><a href="#">Motivation</a></li>
-                                <li><a href="#">Politics</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Technology</a></li>
-                                <li><a href="#">Travel</a></li>
-                            </ul>
-                        </div>
-                        <div class="ad-area pt-3">
-                            <a href="#">
-                                <img src="assets/img/ad/add.png" alt="img">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <?php include "boxright2.php";?>
             </div>
         </div>
     </div>

@@ -4114,3 +4114,53 @@ blockquote .icon {
 .footer-area .copyright-area p span {
   color: #ff1d5b;
 }
+
+/* Gói đăng tin */
+.box_items {
+  display: inline-block;
+  width: 30%; /* Điều chỉnh chiều rộng của mỗi gói theo ý muốn */
+  margin: 10px; /* Khoảng cách giữa các gói */
+  padding: 15px;
+  border: 1px solid #ccc;
+  background-color: #f0f8ff; /* Màu xanh dương */
+  transition: background-color 0.3s ease; /* Hiệu ứng màu nền khi hover */
+}
+
+.box_items:hover {
+  background-color: #4682b4; /* Màu xanh dương khi hover */
+}
+
+.box_items_img {
+  /* Thêm các thuộc tính CSS cho hình ảnh nếu cần */
+}
+
+.item_name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}
+
+.price {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.add {
+  background-color: #4caf50; /* Màu nền nút */
+  color: #fff; /* Màu chữ nút */
+  padding: 8px 15px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+  text-align: center;
+  transition: background-color 0.3s ease; /* Hiệu ứng màu nền khi hover */
+}
+
+.add:hover {
+  background-color: #45a049; /* Màu nền nút khi hover */
+}
+/* end gói đăng tin */

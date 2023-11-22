@@ -4,4 +4,18 @@
         $listgoidangtin=pdo_query($sql);
         return  $listgoidangtin;
     }
+
+ 
+    // function muaGoi($ID_GoiDangTin, $ID_User) {
+    //     // Lấy thông tin gói đăng tin từ cơ sở dữ liệu
+    //     $goiDangTin = getThongTinGoiDangTin($ID_GoiDangTin);
+
+    //     // Thực hiện quá trình mua gói, ví dụ: cập nhật thông tin người dùng
+    //     // ...
+
+        
+    //     return "Mua gói đăng tin thành công!";
+    // }
+
+
 ?>
