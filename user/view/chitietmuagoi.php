@@ -73,22 +73,25 @@ td {
 </head>
 <body>
 <main class="catalog  mb ">
-<div class="boxleft">
+
 <?php extract($goidangtin); ?>
+<div class="boxleft">
     <div class="  mb">
         <div class="box_title">
-            <?php echo $TenGoi; ?>
+            Thông tin gói đăng tin
         </div>
         <div class="box_content">
             <?php 
-                echo "<p>$ChuKy</p>";
-                echo "<p>$$Gia</p>";
-                echo "<p>$Mota</p>";
+                echo "Tên gói: ".$TenGoi."<br>";
+                echo "Chu kỳ: ".$ChuKy."<br>";
+                echo "Giá: "."$$Gia"."<br>";
+                echo "Mô tả: "."$Mota";
             ?>
         </div>
     </div>
+</div>
 
- <div class="boxright">
+<div class="boxright">
     <div class="mb">
     <?php
         echo ' <div class="box_title">Tổng cộng</div>
@@ -101,7 +104,15 @@ td {
             <hr>
             <?php echo "Tổng thanh toán";?><br>
             <?php echo "<p class=center>$$Gia</p>"; ?><br>
-            <button class="center"><a href="index.php?act=chitietmuagoi&ID_GoiDangTin=<?php echo $ID_GoiDangTin?>">Đi đến thanh toán</a></button>
+            <form action="index.php?act=thanhtoantc" method="post">
+            <input type="hidden" name="ID_User" value="<?php echo $_SESSION['Username']['ID_User']?>">
+            <input type="hidden" name="ID_GoiDangTin" value="<?php echo $ID_GoiDangTin?>">
+            <?php if($Gia == 0) {?>
+                <a href="index.php?act=thanhtoantc"><input type="submit" class="center" name="thanhtoan" value="Thanh toán Coins"></a></button>
+            <?php }else{?>
+                <a href="index.php?act=thanhtoantc"><input type="submit" class="center" name="thanhtoan" value="Thanh toán Coins"></a></button>
+            <?php }?>
+            </form>
         <!-- </div> -->
         <!-- <div class="box_content">
             <?php 
@@ -114,8 +125,28 @@ td {
     </div>
  </div>
 
+<div class="boxleft">
+    <div class="  mb">
+        <div class="box_title">
+            Phương thức thanh toán
+        </div>
+        <div class="box_content">
+            <form onsubmit="return comfirm('Xác nhận đặt hàng')" target="_blank" enctype="application/x-www-form-urlencoded" action="thanhtoan.php" method="post">
+                <button type="submit" name="cod">Thanh toán COD</button><br><br>
+                <button type="submit" name="momo">Thanh toán MOMO</button><br><br>
+                <button type="submit" name="redirect">Thanh toán VNPAY</button>
+            </form>
+            <?php 
+                
+            ?>
+        </div>
+    </div>
+</div>
+
  
- </div>
+
+ 
+ 
  </div>
 </main>
 

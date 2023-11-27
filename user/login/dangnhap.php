@@ -55,7 +55,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block" name="dangnhap">Đăng nhập</button>
+            <input type="submit" class="btn btn-primary btn-block" name="dangnhap" value="Đăng nhập">
           </div>
           <!-- /.col -->
         </div>
@@ -75,9 +75,23 @@
 <!-- /.login-box -->
 
 <?php
-if (isset($_POST['dangnhap'])) {
-    $loginMess = dangnhap($_POST['Username'], $_POST['Password']);
-    header("Location: ../../index.php");
+if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+    $Username = $_POST['Username'];
+    $Password = $_POST['Password'];
+    $checkuser = checkuser($Username, $Password);
+    if(is_array($checkuser)){
+      $_SESSION['Username'] = $checkuser;
+      if($_SESSION['Username']['Role']==1){
+        header("Location: ../../admin/index.php");
+      }else{
+        header("Location: ../../index.php");
+      }
+      
+    }else{
+      $thongbao = "Sai thông tin tài khoản hoặc mật khẩu";
+      echo $thongbao;
+    }
+    
 }
 ?>
 <!-- jQuery -->

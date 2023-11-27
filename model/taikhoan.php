@@ -2,8 +2,8 @@
     session_start();
     
     //dang ky
-    function insert_taikhoan($Username,$Password,$Email,$Tel,$Role){
-        $sql="INSERT INTO `tai_khoan` ( `Username`, `Password`, `Email`, `Tel`, `Role`) VALUES ( '$Username', '$Password', '$Email', '$Tel', '$Role') ";
+    function insert_taikhoan($Username,$Password,$Email,$Tel){
+        $sql="INSERT INTO `tai_khoan` ( `Username`, `Password`, `Email`, `Tel`) VALUES ( '$Username', '$Password', '$Email', '$Tel') ";
         pdo_execute($sql);
     }
 
@@ -13,14 +13,20 @@
         return  $listtaikhoan;
     }
 
+    function checkuser($Username, $Password){
+        $sql = "select * from tai_khoan where Username ='".$Username."' AND Password='".$Password."'";
+        $result = pdo_query_one($sql);
+        return $result;
+    }
+
     function dangnhap($Username,$Password) {
+        $thongbao = "Thông tin tài khoản sai";
         $sql="SELECT * FROM tai_khoan WHERE Username='$Username' and Password='$Password'";
         $taikhoan = pdo_query_one($sql);
-
         if ($taikhoan != false) {
             $_SESSION['Username'] = $Username;
         } else {
-            return "Thông tin tài khoản sai";
+            return $thongbao;
         }
     }
 

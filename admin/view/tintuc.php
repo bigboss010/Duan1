@@ -46,6 +46,7 @@
         <tbody>
             <!-- <tr> -->
                 <?php
+                $dstt = loadall_tintucadmin();
                 foreach ($dstt as $tt){
                     extract($tt);
                     $hinh =  $img_path.$HinhAnhTin;

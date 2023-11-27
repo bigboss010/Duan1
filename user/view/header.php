@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-
+    <!-- <link rel="stylesheet" href="assets/css/css.css"> -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -48,20 +50,34 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-6">
+                        <?php 
+                        $ID_User = $_SESSION['Username']['ID_User'];
+                        $socoins = loadall_coins($ID_User);
+                        foreach($socoins as $coins){
+                            extract($coins);
+                            echo "Số coins hiện có: $".$Coins;
+                        }
+                        ?><br>
                         <div class="header-weather"><i class="fa fa-weather"></i>   38°C</div>                  
                         <div class="header-date">August 6, 2022</div>
                     </div>
                     <div class="col-md-6 col-sm-6 text-end">
                            
-                            <?php if (!$_SESSION) { ?>
+                            <?php if (!isset($_SESSION['Username'])) { ?>
                                 <button><a href="user/login/dangnhap.php" ><i >Đăng nhập</i></a></button>
-                                <?php if (isset($loginMess)&&$loginMess != '') {
-                                    echo $loginMess;
-                                } ?>
                                 <button><a href="user/login/dangky.php" ><i >Đăng ký</i></a></button>
                             <?php } else { ?>
-                                <p>Hello <?=$_SESSION['Username']?></p>
-                                <button><a href="admin/index.php">Đến Admin</a></button>
+                                <p>Hello <?=$_SESSION['Username']['Username']?></p>
+                                <?php
+                                    if($_SESSION['Username']['Role'] == 1){
+                                        $linkadmin = "admin/index.php";
+                                        // $linkuser = "index.php?act=dangtin&ID_GoiDangTin=$ID_GoiDangTin";
+                                       echo "<button><a href='".$linkadmin."'>Đến Admin</a></button>";
+                                    }else{
+                                        // echo "<button><a href='".$linkuser."'>Đăng Bài</a></button>";
+                                    }
+                                ?>
+                                
                                 <button><a href="index.php?act=dangxuat">Đăng xuất</a></button>
                             <?php  } ?>
                                 <div class="htop_social">
@@ -95,7 +111,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="miralax_main_menu">
                     <ul class="navbar-nav menu-open">
-                        <li class="menu-item-has-children current-menu-item">
+                        <li>
                             <a href="index.php">Trang chủ</a>
                             <!-- <ul class="sub-menu">
                                 <li><a href="home.html">Home 01</a></li>
@@ -104,20 +120,26 @@
                                 <li><a href="index-4.html">Home 04</a></li>
                             </ul> -->
                         </li>
-                        <li><a href="index.php?act=baiviet">Giới thiệu</a></li>
+                        <li><a href="index.php?act=baiviet">Tất cả bài viết</a></li>
                         <!-- <li><a href="blog-category.html">Politics</a></li>
                         <li><a href="blog-category.html">Tech</a></li> -->
                         <li class="menu-item-has-children current-menu-item">
                             <a href="#">Danh mục tin tức</a>
                             <ul class="sub-menu">
-                                <li><a href="index.php?act=blog">Phim chiếu rạp</a></li>
-                                <!-- <li><a href="index.php?act=blog">Phim chiếu rạp</a></li>
-                                <li><a href="index.php?act=blog-category">Phim truyền hình Việt Nam</a></li>
-                                <li><a href="index.php?act=blog-detail">Phim Hoa Ngữ - Hàn Quốc</a></li> -->
+                                <li><a href="index.php?act=phimchieurap">Phim chiếu rạp</a></li>
+                                <li><a href="index.php?act=phimthvn">Phim truyền hình Việt Nam</a></li>
+                                <li><a href="index.php?act=phimhqtq">Phim Hoa Ngữ - Hàn Quốc</a></li>
                             </ul>
                         </li>
                         <!-- <li><a href="index.php?act=about">Phim Hoa Ngữ - Hàn Quốc</a></li> -->
-                        <li><a href="index.php?act=goidangtin">Gói đăng tin</a></li>
+                        <li class="menu-item-has-children current-menu-item">
+                        <a href="#">Gói đăng tin</a>
+                        <ul class="sub-menu">
+                        <li><a href="index.php?act=goidangtin">Mua gói đăng tin</a></li>
+                        <li><a href="index.php?act=goidangtincuatoi">Gói đăng tin của tôi</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="index.php?act=napcoins">Nạp Coins</a></li>
                         <li><a href="index.php?act=lienhe">Liên hệ</a></li>
                     </ul>
                 </div>

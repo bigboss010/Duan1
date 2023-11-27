@@ -10,7 +10,7 @@
         $act=$_GET['act'];
         switch($act){
             case "qltintuc":
-                $dstt = loadall_tintuc();
+                // $dstt = loadall_tintucadmin();
                 include "view/tintuc.php";
                 break;
 

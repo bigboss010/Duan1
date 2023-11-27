@@ -6,7 +6,7 @@ function loadall_danhmuctin(){
 }
 function load_ten_dm($ID_DanhMuc){
     if($ID_DanhMuc>0){
-        $sql="select * from danh_muc_tin where id=".$ID_DanhMuc;
+        $sql="select * from danh_muc_tin where ID_DanhMuc=".$ID_DanhMuc;
         $dm=pdo_query_one($sql);
         extract($dm);
         return $TenDanhMuc;

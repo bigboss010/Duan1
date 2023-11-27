@@ -2,7 +2,7 @@
         <div class="breadcrumb-area">
             <div class="row justify-content-center">
                 <div class="col-md-12">
-					<h1 class="theme-breacrumb-title">Tất cả bài viết</h1>
+					<h1 class="theme-breacrumb-title">Phim Hoa Ngữ - Hàn Quốc</h1>
 				</div>
             </div>
         </div>

@@ -3,10 +3,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="braking-news-wrap">
-                        <span>Braking News</span>
+                        <span>Tin tức nhanh</span>
                         <div class="marquee">
-                            <p>In the news: small businesses for expect revenue growth in 2022.</p>
-                            <div class="breaking-news-post-date">March 16</div>
+                            <p>Tin tức: Các bộ phim mới được kì vọng trong năm 2023.</p>
+                            <div class="breaking-news-post-date">Ngày 16</div>
                         </div>
                     </div>
                 </div> 

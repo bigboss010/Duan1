@@ -58,7 +58,12 @@
     </style>
 </head>
 <body>
-<?php
+<div class="container">
+        <div class="breadcrumb-area">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+					<h1 class="theme-breacrumb-title">Chọn mua gói đăng tin để đăng tin tức</h1>
+                    <?php
     $i=0;
     foreach ($dsgdt as $goi){
         extract($goi);
@@ -68,18 +73,60 @@
         }else{
             $mr="mr";
         }
-        echo '<div class="box_items '.$mr.'">
-            <div class="box_items_img">  
-        </div>
-        <a class="item_name" href="#">'.$TenGoi.'</a>
-        <p class="price">'.$ChuKy.'</p>
-        <p class="price">$'.$Gia.'</p>
-        <p class="price">'.$Mota.'</p>
-        <div class="add"><a href="index.php?act=muagoi&ID_GoiDangTin='.$ID_GoiDangTin.'">Mua gói</a></div>
-        </div>';
-        $i+=1;
+        if (isset($_SESSION['Username'])) {
+            if($MuaGoi == 1){
+                echo '<div class="box_items ' . $mr . '">
+                    <div class="box_items_img">  
+                    </div>
+                    <a class="item_name" href="#">' . $TenGoi . '</a>
+                    <p class="price">' . $ChuKy . '</p>
+                    <p class="price">$' . $Gia . '</p>
+                    <p class="price">' . $Mota . '</p>
+                    <div class="add"><a href="index.php?act=dangtin&ID_User='.$_SESSION['Username']['ID_User'].'">Đăng bài ngay</a></div>
+                  </div>';
+                  $i+=1; 
+            }else{
+                echo '<div class="box_items ' . $mr . '">
+                    <div class="box_items_img">  
+                    </div>
+                    <a class="item_name" href="#">' . $TenGoi . '</a>
+                    <p class="price">' . $ChuKy . '</p>
+                    <p class="price">$' . $Gia . '</p>
+                    <p class="price">' . $Mota . '</p>
+                    <div class="add"><a href="index.php?act=muagoi&ID_GoiDangTin=' . $ID_GoiDangTin . '&ID_User='.$_SESSION['Username']['ID_User'].'">Mua gói</a></div>
+                  </div>';
+                  $i+=1; 
+            }
+        } else {
+            echo '<div class="box_items ' . $mr . '">
+                    <div class="box_items_img">  
+                    </div>
+                    <a class="item_name" href="#">' . $TenGoi . '</a>
+                    <p class="price">' . $ChuKy . '</p>
+                    <p class="price">$' . $Gia . '</p>
+                    <p class="price">' . $Mota . '</p>
+                    <p>Vui lòng đăng nhập để sử dụng dịch vụ!!!</p>
+                  </div>';
+                  $i+=1; 
+        }
+        
+        // <!-- echo '<div class="box_items '.$mr.'">
+        //     <div class="box_items_img">  
+        // </div>
+        // <a class="item_name" href="#">'.$TenGoi.'</a>
+        // <p class="price">'.$ChuKy.'</p>
+        // <p class="price">$'.$Gia.'</p>
+        // <p class="price">'.$Mota.'</p>
+        // <div class="add"><a href="index.php?act=muagoi&ID_GoiDangTin='.$ID_GoiDangTin.'">Mua gói</a></div>
+        // </div>';
+        
     }
 ?>
+				</div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>
