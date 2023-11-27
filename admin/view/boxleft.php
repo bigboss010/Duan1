@@ -44,6 +44,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="index.php?act=qldanhmuctin" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh mục tin</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="index.php?act=qltintuc" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -51,15 +57,33 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="index.php?act=qldanhmuctin" class="nav-link">
+                <a href="index.php?act=qlgdt" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Danh mục tin</p>
+                  <p>Gói đăng tin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index.php?act=qlnapcoins" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Nạp coins</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="index.php?act=qltaikhoan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tài khoản</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index.php?act=qlthanhvien" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thành viên</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index.php?act=qlbinhluan" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bình luận</p>
                 </a>
               </li>
               <!-- <li class="nav-item">
