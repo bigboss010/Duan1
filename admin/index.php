@@ -1,6 +1,7 @@
 <?php
     include "../model/pdo.php";
     include "../model/tintuc.php";
+    include "../model/goidangtin.php";
     include "../model/taikhoan.php";
     include "../model/danhmuctin.php";
     include "view/header.php";
@@ -28,10 +29,20 @@
                 include "view/tintuc.php";
                 break;
 
-                case 'qltaikhoan':
-                    $listtaikhoan = loadall_taikhoan();
-                    include "view/taikhoan.php";
-                    break;
+            case 'qltaikhoan':
+                $listtaikhoan = loadall_taikhoan();
+                include "view/taikhoan.php";
+                break;
+
+            case 'qlgdt':
+                $listgdt = loadall_goidangtin();
+                include "view/goidangtin.php";
+                break;
+
+            case 'qltaikhoan':
+                $listtaikhoan = loadall_taikhoan();
+                include "view/taikhoan.php";
+                break;
     
     }
     }else{

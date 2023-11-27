@@ -51,12 +51,14 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-6">
                         <?php 
+                        if (isset($_SESSION['Username'])) {
                         $ID_User = $_SESSION['Username']['ID_User'];
                         $socoins = loadall_coins($ID_User);
                         foreach($socoins as $coins){
                             extract($coins);
                             echo "Số coins hiện có: $".$Coins;
                         }
+                    } else { echo "Số coins hiện có: $0"; }
                         ?><br>
                         <div class="header-weather"><i class="fa fa-weather"></i>   38°C</div>                  
                         <div class="header-date">August 6, 2022</div>

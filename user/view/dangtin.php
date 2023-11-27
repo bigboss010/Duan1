@@ -4,7 +4,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
 					<h1 class="theme-breacrumb-title">Thêm mới tin tức</h1>
-          <form action="index.php?act=dangtin" method="POST" enctype="multipart/form-data">
+          <form action="index.php?act=dangtin&ID_GoiDangTin=<?php if (isset($_GET['ID_GoiDangTin'])) {
+            $ID_GoiDangTin = ($_GET['ID_GoiDangTin']);
+            echo $ID_GoiDangTin;
+            }?>" method="POST" enctype="multipart/form-data">
           <div class="row2 mb10 form_content_container">
            <label> Danh mục tin</label><br>
            <select name="ID_DanhMuc" id="">

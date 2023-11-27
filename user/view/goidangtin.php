@@ -82,7 +82,7 @@
                     <p class="price">' . $ChuKy . '</p>
                     <p class="price">$' . $Gia . '</p>
                     <p class="price">' . $Mota . '</p>
-                    <div class="add"><a href="index.php?act=dangtin&ID_User='.$_SESSION['Username']['ID_User'].'">Đăng bài ngay</a></div>
+                    <div class="add"><a href="index.php?act=dangtin&ID_GoiDangTin='.$ID_GoiDangTin.'&ID_User='.$_SESSION['Username']['ID_User'].'">Đăng bài ngay</a></div>
                   </div>';
                   $i+=1; 
             }else{

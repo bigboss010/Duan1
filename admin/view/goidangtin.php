@@ -25,19 +25,22 @@
                 <th style="width: 20%">
                 </th>
                 <th style="width: 10%">
-                    ID Tin Tức
+                    ID Gói đăng tin
                 </th>
                 <th style="width: 10%">
-                    Tên thành viên
+                    Tên gói
                 </th>
                 <th style="width: 10%">
-                    Tên tin tức
+                    Chu Kỳ
                 </th>
                 <th style="width: 10%">
-                    Ảnh
+                    Giá
                 </th>
                 <th style="width: 10%">
-                    Trạng thái
+                    Mô tả
+                </th>
+                <th style="width: 10%">
+                    Mua gói
                 </th>
                 <!-- <th style="width: 20%">
                 </th> -->
@@ -45,27 +48,26 @@
         </thead>
         <tbody>
                 <?php
-                $dstt = loadall_tintucadmin();
-                foreach ($dstt as $tt){
-                    extract($tt);
-                    $hinh =  $img_path.$HinhAnhTin;
+                foreach ($listgdt as $gdt){
+                    extract($gdt);
                     echo '<tr>
                     <td> #</td>
-                    <td>'.$ID_TinTuc.'</td>    
-                    <td><a>Phạm Quốc Khanh</a></td>    
-                    <td>'.$TieuDeTin.'</td>
-                    <td><img class="w-100" src="'.$hinh.'" height="100px" alt=""></td>
-                    <td><p >'.$TrangThai.'</p></td>
+                    <td>'.$ID_GoiDangTin.'</td>        
+                    <td>'.$TenGoi.'</td>
+                    <td>'.$ChuKy.'</td>
+                    <td>'.$Gia.'</td>
+                    <td>'.$Mota.'</td>
+                    <td><p >'.$MuaGoi.'</p></td>
                     <td class="project-actions text-right">
                     <a class="btn btn-primary btn-sm" href="#">
                         <i class="fas fa-folder">
                         </i>
                         View
                     </a>
-                    <a class="btn btn-info btn-sm" href="index.php?act=duyettin&ID_TinTuc='.$ID_TinTuc.'">
+                    <a class="btn btn-info btn-sm" href="#">
                         <i class="fas fa-pencil-alt">
                         </i>
-                        Apply
+                        Update
                     </a>
                     <a class="btn btn-danger btn-sm" href="#">
                         <i class="fas fa-trash">
