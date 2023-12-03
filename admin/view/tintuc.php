@@ -1,10 +1,16 @@
 <!-- Main content -->
+<style>
+    .card-title{ 
+        text-align: center;
+        width: 100%;
+    }
+</style>
 <section class="content">
 
 <!-- Default box -->
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Quản lí tin tức</h3>
+    <h1  class="card-title"></h1>
 
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -16,7 +22,7 @@
     </div>
   </div>
   <div class="card-body p-0">
-    <table class="table table-striped projects">
+    <table class="table table-border projects">
         <thead>
             <tr>
                 <!-- <th style="width: 1%">
@@ -49,8 +55,9 @@
                 foreach ($dstt as $tt){
                     extract($tt);
                     $hinh =  $img_path.$HinhAnhTin;
-                    echo '<tr>
-                    <td> #</td>
+                    echo '
+                    <tr>
+                    <td></td>
                     <td>'.$ID_TinTuc.'</td>    
                     <td><a>Phạm Quốc Khanh</a></td>    
                     <td>'.$TieuDeTin.'</td>
@@ -60,17 +67,17 @@
                     <a class="btn btn-primary btn-sm" href="#">
                         <i class="fas fa-folder">
                         </i>
-                        View
+                        Xem
                     </a>
                     <a class="btn btn-info btn-sm" href="index.php?act=duyettin&ID_TinTuc='.$ID_TinTuc.'">
                         <i class="fas fa-pencil-alt">
                         </i>
-                        Apply
+                        Duyệt
                     </a>
-                    <a class="btn btn-danger btn-sm" href="#">
+                    <a class="btn btn-danger btn-sm" href="index.php?act=antin&ID_TinTuc='.$ID_TinTuc.'">
                         <i class="fas fa-trash">
                         </i>
-                        Delete
+                        Ẩn
                     </a>
                     </td>
                      </tr> ';

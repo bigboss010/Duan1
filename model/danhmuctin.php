@@ -9,25 +9,26 @@ function load_ten_dm($ID_DanhMuc){
         $sql="select * from danh_muc_tin where ID_DanhMuc=".$ID_DanhMuc;
         $dm=pdo_query_one($sql);
         extract($dm);
-        return $TenDanhMuc;
+        return $name;
     }else{
         return "";
     }
 }
-// function insert_danhmuc($tenloai){
-//     $sql="insert into danh_muc_tin(name) values('$tenloai')";
-//     pdo_execute($sql);
-// }
-// function delete_danhmuc($id){
-//     $sql="delete from danh_muc_tin where id=".$id;
-//     pdo_execute($sql);
-// }
-// function loadone_danhmuc($id){
-//     $sql= "select* from danh_muc_tin where id =".$id;
-//     $dm=pdo_query_one($sql);
-//     return $dm;
-// }
-// function update_danhmuc($id, $tenloai){
-//     $sql="update danh_muc_tin set name=' ".$tenloai." 'where id =".$id;
-//     pdo_execute($sql);
-// }
+function insert_danhmuc($TenDanhMuc){
+    $sql="insert into danh_muc_tin(TenDanhMuc) values('$TenDanhMuc')";
+    pdo_execute($sql);
+}
+function delete_danhmuc($ID_DanhMuc){
+    $sql="delete from danh_muc_tin where ID_DanhMuc=".$ID_DanhMuc;
+    pdo_execute($sql);
+}
+function loadone_danhmuctin($ID_DanhMuc){
+    $sql= "select* from danh_muc_tin where ID_DanhMuc =".$ID_DanhMuc;
+    $dm=pdo_query_one($sql);
+    return $dm;
+}
+function update_danhmuc($ID_DanhMuc, $TenDanhMuc){
+    $sql="update danh_muc_tin set TenDanhMuc='".$TenDanhMuc."' where ID_DanhMuc=".$ID_DanhMuc;
+    // UPDATE `danh_muc_tin` SET `TenDanhMuc` = 'Phim chiếu rạp gggkl' WHERE `danh_muc_tin`.`ID_DanhMuc` = 4;
+    pdo_execute($sql);
+}

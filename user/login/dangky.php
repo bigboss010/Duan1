@@ -1,6 +1,7 @@
 <?php
     include "../../model/pdo.php";
     include "../../model/taikhoan.php";
+    include "../../model/coins.php";
     include "../../global.php";
     
 ?>
@@ -104,6 +105,12 @@
         }
         if(isset($thongbao) && ($thongbao != "")) {
             echo $thongbao;
+            $listtaikhoan = loadall_taikhoanID();
+            foreach($listtaikhoan as $tk){
+              extract($tk);
+              insert_NapCoins($MAXID_User);
+              
+            }
         }
         ?>
 

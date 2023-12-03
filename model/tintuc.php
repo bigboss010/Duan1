@@ -30,10 +30,20 @@
         $query = "UPDATE tin_tuc SET TrangThai = 1 WHERE ID_TinTuc = $ID_TinTuc";
         pdo_execute($query);
     }
+    function anTin($ID_TinTuc) {
+        $query = "UPDATE tin_tuc SET TrangThai = 0 WHERE ID_TinTuc = $ID_TinTuc";
+        pdo_execute($query);
+    }
     
     function insert_tintuc($TieuDeTin, $NoiDungTin, $hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin){
         $sql="insert into tin_tuc(TieuDeTin,NoiDungTin,HinhAnhTin,ID_DanhMuc,ID_User,ID_GoiDangTin) values('$TieuDeTin', '$NoiDungTin', '$hinh', '$ID_DanhMuc', '$ID_User', '$ID_GoiDangTin')";
         pdo_execute($sql);
+    }
+
+    function loadone_tintuc($ID_TinTuc){
+        $sql = "select * from tin_tuc where ID_TinTuc = $ID_TinTuc";
+        $result = pdo_query_one($sql);
+        return $result;
     }
 
 ?>

@@ -13,6 +13,12 @@
         return  $listtaikhoan;
     }
 
+    function loadall_taikhoanID(){
+        $sql="select MAX(ID_User) as MAXID_User from tai_khoan";
+        $listtaikhoan=pdo_query($sql);
+        return  $listtaikhoan;
+    }
+
     function checkuser($Username, $Password){
         $sql = "select * from tai_khoan where Username ='".$Username."' AND Password='".$Password."'";
         $result = pdo_query_one($sql);

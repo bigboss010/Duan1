@@ -1,23 +1,30 @@
 <div class="col-lg-4">
                     <div class="section-title pb-0">
-                        <h4 class="title left-line">Featured Posts</h4>
+                        <h4 class="title left-line">Tin Tức Nổi Bật</h4>
                     </div>
-                    <div class="media-post-wrap-3 media">
-                        <div class="thumb">
-                            <img src="assets/img/blog/obama.jpg" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <h6><a href="blog-category.html">Obama avoids crowds outside Edinburgh charity dinner.</a></h6>
-                            <div class="meta d-flex">
-                                <div class="tag"><a href="#">Politics</a></div>
-                                <div class="date">
-                                    <i class="fa fa-clock-o"></i>
-                                    July 12, 2021
-                                </div>
-                            </div>                                
-                        </div>
-                    </div>
-                    <div class="media-post-wrap-3 media">
+                    <?php
+                        $dstt = loadall_tintucuser();
+                        foreach($dstt as $tt){
+                            extract($tt);
+                            $hinh =  $img_path.$HinhAnhTin;
+                            echo '<div class="media-post-wrap-3 media">
+                            <div class="thumb">
+                                <img src="'.$hinh.'" alt="img">
+                            </div>
+                            <div class="media-body">
+                                <h6><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h6>
+                                <div class="meta d-flex">
+                                    <div class="tag"><a href="#">Politics</a></div>
+                                    <div class="date">
+                                        <i class="fa fa-clock-o"></i>
+                                        '.$NgayDangTin.'
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>';
+                        }
+                    ?>
+                    <!-- <div class="media-post-wrap-3 media">
                         <div class="thumb">
                             <img src="assets/img/blog/parliament-img.jpg" alt="img">
                         </div>
@@ -61,33 +68,40 @@
                                 </div>
                             </div>                                
                         </div>
-                    </div>
+                    </div> -->
                     <div class="post-list-small-wrapper">
                         <div class="section-title pb-0">
-                            <h4 class="title">Weekly Post</h4>
+                            <h4 class="title">Tin Tức Trong Tuần</h4>
                         </div>
                         <div class="post-grid-slider owl-carousel">
-                            <div class="item">
+                           <?php
+                            $dstt = loadall_tintucuser();
+                            foreach($dstt as $tt){
+                                extract($tt);
+                                $hinh =  $img_path.$HinhAnhTin;
+                                echo ' <div class="item">
                                 <div class="thumb">
-                                    <img src="assets/img/blog/1.jpg" alt="img">
+                                    <img src="'.$hinh.'" alt="img">
                                 </div>
                                 <div class="details">
-                                    <p>When working remotely and having to manage your own time, it is not uncommon for breaks to be overlooked.</p>
+                                <a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'"><p>'.$TieuDeTin.'</p></a>
                                     <div class="meta d-flex">
                                         <div class="author">
                                             <div class="thumb">
                                                 <img src="assets/img/banner/user.jpg" alt="img">
                                             </div>
-                                            <a href="#">Stiven Jackson</a>
+                                            <a href="#">'.$_SESSION['Username']['Username'].'</a>
                                         </div>
                                         <div class="date">
                                             <i class="fa fa-clock-o"></i>
-                                                Mar 16, 2022						
+                                            '.$NgayDangTin.'						
                                         </div>
                                     </div> 
                                 </div>
-                            </div>
-                            <div class="item">
+                            </div>';
+                            }
+                           ?>
+                            <!-- <div class="item">
                                 <div class="thumb">
                                     <img src="assets/img/blog/2.png" alt="img">
                                 </div>
@@ -146,7 +160,7 @@
                                         </div>
                                     </div> 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

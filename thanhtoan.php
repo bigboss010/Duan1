@@ -1,50 +1,64 @@
 <?php
+include "model/pdo.php";
+include "model/coins.php";
+$ID_User = $_POST['ID_User'];
+$NewCoins = $_POST['Coins'];
+$NewSoTien = $_POST['SoTien'];
+function execPostRequest($url, $data)
+{
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Content-Length: ' . strlen($data))
+    );
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+    //execute post
+    $result = curl_exec($ch);
+    //close connection
+    curl_close($ch);
+    return $result;
+}
+
 if(isset($_POST['cod'])){
-    echo "cod";
+    updateCoinsNap($NewCoins,$NewSoTien,$ID_User);
+    header("Location: index.php?act=thanhtoantc");
 }elseif(isset($_POST['momo'])){
     
-    header('Content-type: text/html; charset=utf-8');
-        
-        
-    function execPostRequest($url, $data)
-    {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($data))
-        );
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-        //execute post
-        $result = curl_exec($ch);
-        //close connection
-        curl_close($ch);
-        return $result;
-    }
-    
-    
     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
-    
-    
-    $partnerCode = 'MOMOBKUN20180529';
-    $accessKey = 'klm05TvNBzhg7h7j';
-    $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-    $orderInfo = "Thanh toán qua mã QR MoMo";
-    $amount = "10000";
-    $orderId = time() ."";
-    $redirectUrl = "http://localhost:8686/duan1/index.php?act=chitietmuagoi&ID_GoiDangTin=1";
-    $ipnUrl = "http://localhost:8686/duan1/index.php?act=chitietmuagoi&ID_GoiDangTin=1";
-    $extraData = "";
+
+
+$partnerCode = 'MOMOBKUN20180529';
+$accessKey = 'klm05TvNBzhg7h7j';
+$secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+$orderInfo = "Thanh toán qua MoMo";
+$amount = $_POST['SoTien'];
+$orderId = rand(00,9999);
+$redirectUrl = "http://localhost/Duan1/index.php?act=thanhtoantc";
+$ipnUrl = "http://localhost/Duan1/index.php?act=thanhtoantc";
+$extraData = "";
+
+
+
+    $partnerCode = $partnerCode;
+    $accessKey = $accessKey;
+    $serectkey = $secretKey;
+    $orderId = $orderId; // Mã đơn hàng
+    $orderInfo = $orderInfo;
+    $amount = $amount;
+    $ipnUrl = $ipnUrl;
+    $redirectUrl = $redirectUrl;
+    $extraData = $extraData;
 
     $requestId = time() . "";
-    $requestType = "captureWallet";
+    $requestType = "payWithATM";
     // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
     //before sign HMAC SHA256 signature
     $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
-    $signature = hash_hmac("sha256", $rawHash, $secretKey);
+    $signature = hash_hmac("sha256", $rawHash, $serectkey);
     $data = array('partnerCode' => $partnerCode,
         'partnerName' => "Test",
         "storeId" => "MomoTestStore",
@@ -60,17 +74,18 @@ if(isset($_POST['cod'])){
         'signature' => $signature);
     $result = execPostRequest($endpoint, json_encode($data));
     $jsonResult = json_decode($result, true);  // decode json
-
+    updateCoinsNap($NewCoins,$NewSoTien,$ID_User);
     //Just a example, please check more in there
-    
-        header('Location: ' . $jsonResult['payUrl']);
+
+    header('Location: ' . $jsonResult['payUrl']);
+
 }elseif(isset($_POST['redirect'])){
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-$vnp_Returnurl = "http://localhost:8686/duan1/index.php?act=thanhtoantc";
+$vnp_Returnurl = "http://localhost:/duan1/index.php?act=thanhtoantc";
 $vnp_TmnCode = "CGXZLS0Z";//Mã website tại VNPAY 
 $vnp_HashSecret = "XNBCJFAKAZQSGTARRLGCHVZWCIOIGSHN"; //Chuỗi bí mật
 

@@ -74,7 +74,10 @@ td {
 <body>
 <main class="catalog  mb ">
 <div class="boxleft">
-<?php extract($goidangtin); ?>
+<?php 
+if(!empty($goidangtin)){
+extract($goidangtin); 
+?>
     <div class="  mb">
         <div class="box_title">
             <?php echo $TenGoi; ?>
@@ -95,22 +98,14 @@ td {
         <div class="box_content2 product_portfolio">'               
     ?>
     <?php extract($goidangtin); ?>
-    <!-- <div class="  mb"> -->
-        <!-- <div class="box_title"> -->
             <?php echo $TenGoi.' x '.$ChuKy; echo "<p class=right>$$Gia</p>";?>
             <hr>
             <?php echo "Tổng thanh toán";?><br>
             <?php echo "<p class=center>$$Gia</p>"; ?><br>
             <button class="center"><a href="index.php?act=chitietmuagoi&ID_GoiDangTin=<?php echo $ID_GoiDangTin?>">Đi đến thanh toán</a></button>
-        <!-- </div> -->
-        <!-- <div class="box_content">
             <?php 
-                // echo "<p>$ChuKy</p>";
-                // echo "<p>$Gia</p>";
-                // echo "<p>$Mota</p>";
+}else{ echo "Đã có lỗi trong quá trình xử lý!!!";}
             ?>
-        </div> -->
-    <!-- </div> -->
     </div>
  </div>
 

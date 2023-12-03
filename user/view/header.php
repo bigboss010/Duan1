@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <!-- <link rel="stylesheet" href="assets/css/css.css"> -->
+    <link rel="stylesheet" href="assets/css/css.css">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
@@ -54,14 +54,16 @@
                         if (isset($_SESSION['Username'])) {
                         $ID_User = $_SESSION['Username']['ID_User'];
                         $socoins = loadall_coins($ID_User);
-                        foreach($socoins as $coins){
-                            extract($coins);
-                            echo "Số coins hiện có: $".$Coins;
+                        if(!empty($socoins)){
+                            foreach($socoins as $coins){
+                                extract($coins);
+                                echo "Số coins hiện có: $".$Coins;
+                            }
+                        }else {
+                            echo "Số coins hiện có: $0";
                         }
-                    } else { echo "Số coins hiện có: $0"; }
-                        ?><br>
-                        <div class="header-weather"><i class="fa fa-weather"></i>   38°C</div>                  
-                        <div class="header-date">August 6, 2022</div>
+                        } else { echo "Số coins hiện có: $0"; }
+                        ?>
                     </div>
                     <div class="col-md-6 col-sm-6 text-end">
                            
@@ -80,14 +82,14 @@
                                     }
                                 ?>
                                 
-                                <button><a href="index.php?act=dangxuat">Đăng xuất</a></button>
+                                <button><a href="user/login/dangxuat.php">Đăng xuất</a></button>
                             <?php  } ?>
-                                <div class="htop_social">
+                        <!-- <div class="htop_social">
                             <a href="#" class="social-list__link"><i class="fa fa-facebook-f"></i></a>
                             <a href="#" class="social-list__link"><i class="fa fa-twitter"></i></a>
                             <a href="#" class="social-list__link"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="social-list__link"><i class="fa fa-youtube-play"></i></a>
-                        </div>
+                            <a href="#" class="social-list__link"><i class="fa fa-youtube-play"></i></a> 
+                        </div> -->
                     </div>
                 </div>
             </div>	
@@ -122,7 +124,7 @@
                                 <li><a href="index-4.html">Home 04</a></li>
                             </ul> -->
                         </li>
-                        <li><a href="index.php?act=baiviet">Tất cả bài viết</a></li>
+                        <li><a href="index.php?act=baiviet">Tất cả tin tức</a></li>
                         <!-- <li><a href="blog-category.html">Politics</a></li>
                         <li><a href="blog-category.html">Tech</a></li> -->
                         <li class="menu-item-has-children current-menu-item">

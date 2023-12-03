@@ -104,28 +104,17 @@ td {
             <hr>
             <?php echo "Tổng thanh toán";?><br>
             <?php echo "<p class=center>$$Gia</p>"; ?><br>
-            <form action="index.php?act=thanhtoantc" method="post">
+            <form action="index.php?act=xulycoins&ID_GoiDangTin=<?php echo $ID_GoiDangTin?>" method="post">
             <input type="hidden" name="ID_User" value="<?php echo $_SESSION['Username']['ID_User']?>">
             <input type="hidden" name="ID_GoiDangTin" value="<?php echo $ID_GoiDangTin?>">
-            <?php if($Gia == 0) {?>
-                <a href="index.php?act=thanhtoantc"><input type="submit" class="center" name="thanhtoan" value="Thanh toán Coins"></a></button>
-            <?php }else{?>
-                <a href="index.php?act=thanhtoantc"><input type="submit" class="center" name="thanhtoan" value="Thanh toán Coins"></a></button>
-            <?php }?>
+            <a href="index.php?act=xulycoins&ID_GoiDangTin=<? echo $ID_GoiDangTin?>"><input type="submit" class="center" name="thanhtoan" value="Thanh toán Coins"></a></button>
             </form>
-        <!-- </div> -->
-        <!-- <div class="box_content">
-            <?php 
-                // echo "<p>$ChuKy</p>";
-                // echo "<p>$Gia</p>";
-                // echo "<p>$Mota</p>";
-            ?>
-        </div> -->
-    <!-- </div> -->
+            
+        </div>
     </div>
  </div>
 
-<div class="boxleft">
+<!-- <div class="boxleft">
     <div class="  mb">
         <div class="box_title">
             Phương thức thanh toán
@@ -141,13 +130,7 @@ td {
             ?>
         </div>
     </div>
-</div>
-
- 
-
- 
- 
- </div>
+</div> -->
 </main>
 
 </body>

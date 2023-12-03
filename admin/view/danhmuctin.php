@@ -53,20 +53,20 @@
                             <td>'.$ID_DanhMuc.'</td>
                             <td>'.$TenDanhMuc.'</td>
                             <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
+                            <a class="btn btn-primary btn-sm" href="index.php?act=adddm">
                                 <i class="fas fa-folder">
                                 </i>
-                                View
+                                Thêm
                             </a>
-                            <a class="btn btn-info btn-sm" href="#">
+                            <a class="btn btn-info btn-sm" href="index.php?act=suadm&ID_DanhMuc='.$ID_DanhMuc.'">
                                 <i class="fas fa-pencil-alt">
                                 </i>
-                                Update
+                                Sửa 
                             </a>
-                            <a class="btn btn-danger btn-sm" href="#">
+                            <a class="btn btn-danger btn-sm" href="index.php?act=xoadm&ID_DanhMuc='.$ID_DanhMuc.'">
                                 <i class="fas fa-trash">
                                 </i>
-                                Delete
+                                Xóa
                             </a>
                             </td>
                         </tr>';
@@ -587,3 +587,4 @@
 
 </section>
 <!-- /.content -->
+

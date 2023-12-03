@@ -27,7 +27,7 @@
                              <p >'.$NoiDungTin.'</p>
                              <p >'.$NgayDangTin.'</p>
                              <p >Lượt xem '.$LuotXem.'</p>
-                             <a class="btn btn-main mt-3" href="#">Xem chi tiết</a>
+                             <a class="btn btn-main mt-3" href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">Xem chi tiết</a>
                                 ';
                              }
                         // <div class="thumb mb-4">

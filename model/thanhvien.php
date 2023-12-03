@@ -5,7 +5,7 @@
     }
 
     function loadall_thanhvien(){
-        $sql="select * from thanhvien order by ID_ThanhVien desc";
+        $sql="select * from thanh_vien order by ID_ThanhVien desc";
         $listthanhvien=pdo_query($sql);
         return  $listthanhvien;
     }

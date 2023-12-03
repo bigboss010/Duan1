@@ -27,33 +27,11 @@
                              <p >'.$NoiDungTin.'</p>
                              <p >'.$NgayDangTin.'</p>
                              <p >Lượt xem '.$LuotXem.'</p>
-                             <a class="btn btn-main mt-3" href="#">Xem chi tiết</a>
+                             <a class="btn btn-main mt-3" href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">Xem chi tiết</a>
                                 ';
                              }
-                        // <div class="thumb mb-4">
-                        //     <img class="w-100" src="assets/img/blog/obama-1.jpg" alt="img">
-                        // </div>
-                        // <div class="media-body pt-1 ms-0">
-                        //     <a class="tag top-right tag-purple" href="#">Politics</a>
-                        //     <h1><a href="blog-details.html">Obama avoids crowds outside Edinburgh charity dinner.</a></h1>
-                        // </div>
-                        // <div class="meta d-flex">
-                        //     <div class="author">
-                        //         <div class="thumb">
-                        //             <img src="assets/img/banner/user.jpg" alt="img">
-                        //         </div>
-                        //         <a href="#">Stiven Jackson</a>
-                        //     </div>
-                        //     <div class="date">
-                        //         <i class="fa fa-clock-o"></i>
-                        //             Mar 16, 2022						
-                        //     </div>
-                        // </div>
-                        // <p class="mb-3">When working remotely and having to manage your own time, it is not uncommon for breaks to be overlooked. A new survey by the online scheduling platform Doodle confirms the US workforce’s collective neglect of breaks. 72% of US employees admit to feeling</p>
-                        // <a class="btn btn-main mt-3" href="#">Read More</a>
                         ?>
                     </div>
-
                     <!-- <div class="media-post-wrap pd-bottom-40 mb-0">
                         <div class="thumb mb-4">
                             <img class="w-100" src="assets/img/blog/paper-thumb-1.jpg" alt="img">

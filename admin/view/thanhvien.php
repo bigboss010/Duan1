@@ -4,7 +4,7 @@
 <!-- Default box -->
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Quản lí tin tức</h3>
+    <h3 class="card-title">Quản lí tài khoản</h3>
 
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -25,59 +25,42 @@
                 <th style="width: 20%">
                 </th>
                 <th style="width: 10%">
-                    ID Gói đăng tin
+                    ID Mua Gói
                 </th>
                 <th style="width: 10%">
-                    Tên gói
+                    ID User
                 </th>
                 <th style="width: 10%">
-                    Chu Kỳ
+                    Ngày Mua
                 </th>
                 <th style="width: 10%">
-                    Giá
-                </th>
-                <th style="width: 10%">
-                    Mô tả
-                </th>
-                <th style="width: 10%">
-                    Mua gói
+                    Gói Mua
                 </th>
                 <!-- <th style="width: 20%">
                 </th> -->
             </tr>
         </thead>
         <tbody>
-                <?php
-                foreach ($listgdt as $gdt){
-                    extract($gdt);
-                    echo '<tr>
-                    <td> #</td>
-                    <td>'.$ID_GoiDangTin.'</td>        
-                    <td>'.$TenGoi.'</td>
-                    <td>'.$ChuKy.'</td>
-                    <td>'.$Gia.'</td>
-                    <td>'.$Mota.'</td>
-                    <td><p >'.$MuaGoi.'</p></td>
-                    <td class="project-actions text-right">
-                    <a class="btn btn-primary btn-sm" href="#">
-                        <i class="fas fa-folder">
-                        </i>
-                        Xem
-                    </a>
-                    <a class="btn btn-info btn-sm" href="#">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Sửa
-                    </a>
+            <tr>
+            <?php 
+    foreach ($listthanhvien as $thanhvien) {
+        extract($thanhvien);
+        echo '<tr>
+                <td><input type="checkbox" name=""></td>
+                <td>'.$ID_ThanhVien.'</td>
+                <td>'.$ID_User.'</td>
+                <td>'.$NgayGiaNhap.'</td>
+                <td>'.$ID_GoiDangTin.'</td>
+                <td class="project-actions text-right">
                     <a class="btn btn-danger btn-sm" href="#">
                         <i class="fas fa-trash">
                         </i>
                         Xóa
                     </a>
                     </td>
-                     </tr> ';
-                    }
-                ?>
+            </tr>';
+    } 
+?>
         </tbody>
     </table>
   </div>

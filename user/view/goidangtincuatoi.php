@@ -1,4 +1,15 @@
-<div class="container">
+<?php if (!isset($_SESSION['Username'])) { ?>
+  <div class="container">
+        <div class="breadcrumb-area">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+					<h1 class="theme-breacrumb-title">Vui lòng đăng nhập để sử dụng dịch vụ!!!</h1>
+				</div>
+            </div>
+        </div>
+    </div>
+<?php } else { ?>
+    <div class="container">
         <div class="breadcrumb-area">
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -36,13 +47,11 @@
                   </div>';
                   $i+=1; 
         }
-        
-        
-        
     }
 ?>
             
 				</div>
             </div>
         </div>
-    </div>
+    </div>      
+<?php  } ?>
