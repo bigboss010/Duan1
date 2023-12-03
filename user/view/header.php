@@ -51,18 +51,25 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 col-sm-6">
                         <?php 
+                        if (!isset($_SESSION['Username'])){
+                            echo '<button><a href="user/login/dangnhap.php" ><i >Vui Lòng Đăng Nhập!</i></a></button>';
+                         }else{
+                             echo '<button><a href="index.php?act=trangcanhan" ><i >Trang Cá Nhân</i></a></button>';
+                         }
+                        echo "<br>";
                         if (isset($_SESSION['Username'])) {
-                        $ID_User = $_SESSION['Username']['ID_User'];
-                        $socoins = loadall_coins($ID_User);
-                        if(!empty($socoins)){
-                            foreach($socoins as $coins){
-                                extract($coins);
-                                echo "Số coins hiện có: $".$Coins;
+                            $ID_User = $_SESSION['Username']['ID_User'];
+                            $socoins = loadall_coins($ID_User);
+                            if(!empty($socoins)){
+                                foreach($socoins as $coins){
+                                    extract($coins);
+                                    echo "Số coins hiện có: $".$Coins;
+                                }
+                            }else {
+                                echo "Số coins hiện có: $0";
                             }
-                        }else {
-                            echo "Số coins hiện có: $0";
-                        }
-                        } else { echo "Số coins hiện có: $0"; }
+                            } else { echo "Số coins hiện có: $0"; }
+                        
                         ?>
                     </div>
                     <div class="col-md-6 col-sm-6 text-end">
@@ -100,7 +107,7 @@
     <div class="navbar-area">
         <nav class="navbar navbar-expand-lg">
             <div class="container nav-container">
-                <a class="main-logo" href="index.php"><img src="assets/img/logo.png" alt="img"></a>
+                <a class="main-logo" href="index.php"><img src="assets/img/anh.jpg" alt="img"></a>
                 <div class="responsive-mobile-menu">
                     <div class="logo d-lg-none d-block">
                         <a class="main-logo" href="home.html"><img src="assets/img/logo.png" alt="img"></a>

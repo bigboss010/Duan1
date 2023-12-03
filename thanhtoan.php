@@ -1,9 +1,11 @@
 <?php
 include "model/pdo.php";
 include "model/coins.php";
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 $ID_User = $_POST['ID_User'];
 $NewCoins = $_POST['Coins'];
 $NewSoTien = $_POST['SoTien'];
+$NgayNap = date("Y-m-d H:i:s");
 function execPostRequest($url, $data)
 {
     $ch = curl_init($url);
@@ -74,7 +76,8 @@ $extraData = "";
         'signature' => $signature);
     $result = execPostRequest($endpoint, json_encode($data));
     $jsonResult = json_decode($result, true);  // decode json
-    updateCoinsNap($NewCoins,$NewSoTien,$ID_User);
+    $PTTT = $orderInfo;
+    updateCoinsNap($NewCoins,$NewSoTien,$ID_User,$NgayNap,$PTTT);
     //Just a example, please check more in there
 
     header('Location: ' . $jsonResult['payUrl']);

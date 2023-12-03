@@ -3,7 +3,7 @@
     include "../model/tintuc.php";
     include "../model/goidangtin.php";
     include "../model/taikhoan.php";
-    include "../model/thanhvien.php";
+    include "../model/muahang.php";
     include "../model/danhmuctin.php";
     include "../model/binhluan.php";
     include "view/header.php";

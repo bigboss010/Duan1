@@ -4,12 +4,13 @@
     include "model/tintuc.php";
     include "model/danhmuctin.php";
     include "model/taikhoan.php";
-    include "model/thanhvien.php";
+    include "model/muahang.php";
     include "model/thanhtoan.php";
     include "model/coins.php";
     include "user/view/header.php";
     include "global.php";
     $dsdm = loadall_danhmuctin();
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     if(isset($_GET['act'])&&($_GET['act']!="")){
         $act=$_GET['act'];
         switch($act){
@@ -66,6 +67,7 @@
                     $ID_User = $_POST['ID_User'];
                     $TieuDeTin = $_POST['TieuDeTin'];
                     $NoiDungTin = $_POST['NoiDungTin'];
+                    $NgayDangTin = date("Y-m-d H:i:s");
                     $hinh = $_FILES['HinhAnhTin']['name'];
                     $target_dir = "upload/";
                     $target_file = $target_dir.basename($_FILES['HinhAnhTin']['name']);
@@ -74,7 +76,7 @@
                     }else{
                         echo "Upload ảnh không thành công!";
                     }
-                    insert_tintuc($TieuDeTin,$NoiDungTin,$hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin);
+                    insert_tintuc($TieuDeTin,$NoiDungTin,$hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin,$NgayDangTin);
                     $thanhcong = "Thêm thành công, vui lòng chờ admin xét duyệt!";
                     }
                 $listdanhmuctin = loadall_danhmuctin();
@@ -120,6 +122,11 @@
 
             case "about":
                 include "user/view/about.php";
+                break;
+            case "trangcanhan":
+                $dstt = loadall_tintuccanhan($ID_User);
+                $socoins = loadall_lscoins($ID_User);
+                include "user/view/trangcanhan.php";
                 break;
             case "quenmk":
                 if (isset($_POST['guiemail'])) {

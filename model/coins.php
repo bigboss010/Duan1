@@ -9,13 +9,18 @@
         $Socoins=pdo_query($sql);
         return  $Socoins;
     }
+    function loadall_lscoins($ID_User){
+        $sql="select * from nap_coins WHERE ID_User='$ID_User' ";
+        $Socoins=pdo_query($sql);
+        return  $Socoins;
+    }
 
-    function tinhCoins($Coins,$ID_User) {
-        $query = "UPDATE nap_coins SET Coins ='$Coins' WHERE ID_User = $ID_User";
+    function tinhCoins($Coins,$ID_User, $NgayNap) {
+        $query = "UPDATE nap_coins SET Coins ='$Coins', NgayNap ='$NgayNap' WHERE ID_User = $ID_User";
         pdo_execute($query);
     }
 
-    function updateCoinsNap($NewCoins,$NewSoTien,$ID_User) {
+    function updateCoinsNap($NewCoins,$NewSoTien,$ID_User,$NgayNap,$PTTT) {
         $sqlcoins = "SELECT Coins FROM nap_coins WHERE ID_User = ?";
         $sqlsotien = "SELECT SoTien FROM nap_coins WHERE ID_User = ?";
         $oldCoins = pdo_query_one($sqlcoins, $ID_User);
@@ -24,7 +29,7 @@
             // Nếu có dữ liệu trả về từ cả hai câu truy vấn
             $Coins = $oldCoins['Coins'] + $NewCoins;
             $SoTien = $oldSoTien['SoTien'] + $NewSoTien;
-            $query = "UPDATE nap_coins SET Coins ='$Coins', SoTien = '$SoTien' WHERE ID_User = $ID_User";
+            $query = "UPDATE nap_coins SET Coins ='$Coins', SoTien = '$SoTien', NgayNap ='$NgayNap', PTTT = '$PTTT'  WHERE ID_User = $ID_User";
             pdo_execute($query);
         } else {
             echo "Không tìm thấy dữ liệu cho ID_User $ID_User";

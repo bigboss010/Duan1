@@ -35,8 +35,8 @@
         pdo_execute($query);
     }
     
-    function insert_tintuc($TieuDeTin, $NoiDungTin, $hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin){
-        $sql="insert into tin_tuc(TieuDeTin,NoiDungTin,HinhAnhTin,ID_DanhMuc,ID_User,ID_GoiDangTin) values('$TieuDeTin', '$NoiDungTin', '$hinh', '$ID_DanhMuc', '$ID_User', '$ID_GoiDangTin')";
+    function insert_tintuc($TieuDeTin, $NoiDungTin, $hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin,$NgayDangTin){
+        $sql="insert into tin_tuc(TieuDeTin,NoiDungTin,HinhAnhTin,ID_DanhMuc,ID_User,ID_GoiDangTin,NgayDangTin) values('$TieuDeTin', '$NoiDungTin', '$hinh', '$ID_DanhMuc', '$ID_User', '$ID_GoiDangTin', '$NgayDangTin')";
         pdo_execute($sql);
     }
 
@@ -44,6 +44,12 @@
         $sql = "select * from tin_tuc where ID_TinTuc = $ID_TinTuc";
         $result = pdo_query_one($sql);
         return $result;
+    }
+
+    function loadall_tintuccanhan($ID_User){
+        $sql="select * from tin_tuc where ID_User ='$ID_User' order by ID_TinTuc desc limit 0,9";
+        $listtintuc=pdo_query($sql);
+        return  $listtintuc;
     }
 
 ?>
