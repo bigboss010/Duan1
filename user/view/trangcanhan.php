@@ -1,19 +1,28 @@
 
     <style>
+        .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột với tỷ lệ chiều rộng bằng nhau */
+    grid-column-gap: 20px; /* Khoảng cách giữa cột */
+    grid-template-areas: 
+        "tieude tieude"
+        "shorten-content shorten-content";
+}
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
 
         .profile-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
         }
 
         h2 {
             color: #333;
-        }
+            margin-top: 0; 
 
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -36,12 +45,34 @@
         .edit-profile-btn {
             display: block;
             margin-top: 20px;
-            padding: 10px;
             background-color: #4caf50;
             color: #fff;
             text-decoration: none;
             text-align: center;
         }
+        .shorten-content {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    max-height: 180px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    grid-area: shorten-content; /* Đặt vị trí cột cho phần nội dung */
+}
+
+.tieude {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    grid-area: tieude; /* Đặt vị trí cột cho phần tiêu đề */
+}
+
+
     </style>
 
 <body>
@@ -49,12 +80,12 @@
 <div class="profile-container">
 
     <?php
-    // Điều chỉnh mã PHP dựa trên cấu trúc và dữ liệu thực của bạn
-    $ID_User = $_SESSION['Username']['ID_User']; // ID của người dùng đăng nhập
+    $ID_User = $_SESSION['Username']['ID_User']; 
     $Username = $_SESSION['Username']['Username'];
     $Email = $_SESSION['Username']['Email'];
     $Tel = $_SESSION['Username']['Tel'];
-    // Lấy thông tin từ cơ sở dữ liệu hoặc từ biến session
+    $dstt = loadall_tintuccanhan($ID_User);
+    $socoins = loadall_lscoins($ID_User);
     ?>
 
     <h2>Trang Cá Nhân - <?php echo $Username; ?></h2>
@@ -76,7 +107,10 @@
             <td>Số Điện Thoại:</td>
             <td><?php echo $Tel;?></td>
         </tr>
-    </table><br><hr>
+    </table><br>
+    <button><a href="index.php?act=edit_profile">Chỉnh Sửa Thông Tin Cá Nhân</a></button>
+    <hr>
+
 
     <h2>Bài Đăng Của Bạn</h2>
 
@@ -84,17 +118,26 @@
         <tr>
             <th>Tiêu Đề</th>
             <th>Nội Dung</th>
+            <th>Hình ảnh</th>
             <th>Ngày Đăng</th>
+            <th>Trạng Thái</th>
+            <th>Chức năng</th>
         </tr>
         <?php foreach($dstt as $tt){
         extract($tt); ?>
             <tr>
-                <td><?php echo $TieuDeTin; ?></td>
-                <td><?php echo $NoiDungTin; ?></td>
+                
+                <td class="tieude"><?php echo $TieuDeTin; ?></td>
+                <td class="shorten-content"><?php echo $NoiDungTin; ?></td>
+                <td><?php echo '<img src="upload/'.$HinhAnhTin.'" width="50px" alt="">'; ?></td>
                 <td><?php echo $NgayDangTin; ?></td>
+                <td><?php echo $TrangThai; ?></td>
+                <td><button><a href="index.php?act=edit_tintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Sửa</a></button><br>
+                <button><a href="index.php?act=xoatintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Xóa</a></button></td>
             </tr>
         <?php } ?>
-    </table><br><hr>
+    </table><br>
+    <hr>
 
     <h2>Lịch Sử Nạp Coins Gần Nhất</h2>
 
@@ -116,7 +159,6 @@
         <?php } ?>
     </table><br>
 
-    <button><a href="edit_profile.php">Chỉnh Sửa Thông Tin Cá Nhân</a></button>
 
 </div>
 </body><br>

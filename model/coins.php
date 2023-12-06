@@ -1,8 +1,8 @@
 <?php
     function loadall_napcoins(){
         $sql="select * from nap_coins order by ID_NapCoins desc";
-        $listdanhmuc=pdo_query($sql);
-        return  $listdanhmuc;
+        $listnapcoins=pdo_query($sql);
+        return  $listnapcoins;
     }
     function loadall_coins($ID_User){
         $sql="select Coins from nap_coins WHERE ID_User='$ID_User' ";

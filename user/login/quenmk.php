@@ -18,7 +18,4 @@
     </form>
   </div>
 </div>
-    <?php 
-        include "view/boxright.php";
-    ?>
 </main>

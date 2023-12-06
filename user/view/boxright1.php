@@ -18,12 +18,12 @@
                             $hinh =  $img_path.$HinhAnhTin;
                             echo '<div class="media-post-wrap-3 media">
                             <div class="thumb">
-                                <img src="'.$hinh.'" alt="img">
+                                <img src="'.$hinh.'" width="98px" height="98px" alt="img">
                             </div>
                             <div class="media-body">
                                 <h6><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h6>
                                 <div class="meta d-flex">
-                                    <div class="tag"><a href="#">Technology</a></div>
+                                    <div class="tag"><a href="#">'.$TenDanhMuc.'</a></div>
                                     <div class="date">
                                         <i class="fa fa-clock-o"></i>
                                         '.$NgayDangTin.'

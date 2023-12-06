@@ -1,3 +1,4 @@
+
 <style>
       #e{
           background-color: #FF9999;
@@ -58,7 +59,7 @@
            </div>
            <div class="row2 mb10">
             <label>NoiDungTin </label> <br>
-            <textarea name="NoiDungTin" id="" cols="30" rows="10"></textarea>
+            <textarea name="NoiDungTin" id="NoiDungTin"></textarea>
            </div>
          <input class="mr20" name="themmoi" type="submit" value="Thêm mới">
          <input  class="mr20" type="reset" value="Nhập Lại">
@@ -71,7 +72,11 @@
             }
            ?>
         </form>
-            
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <script>
+                        CKEDITOR.replace( 'NoiDungTin' );
+                </script>
 				</div>
   </div>
  

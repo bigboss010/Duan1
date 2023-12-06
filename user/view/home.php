@@ -71,7 +71,7 @@
                     </div>
                 </div> -->
                 <?php
-                 $dstt = loadall_tintucuser();
+                 $dstt = loadall_tintucheaderhome();
                 foreach($dstt as $tt){
                     extract($tt);
                     $hinh =  $img_path.$HinhAnhTin;
@@ -81,14 +81,14 @@
                             <img src="'.$hinh.'" alt="img">
                         </div>
                         <div class="top-post-details top-post-details-2">
-                            <a class="tag top-right tag-pest" href="#">Business</a>
+                            <a class="tag top-right tag-pest" href="#">'.$TenDanhMuc.'</a>
                             <h4><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h4>
                             <div class="meta mt-2">
                                 <div class="user">
                                     <div class="thumb">
-                                        <img src="assets/img/banner/user.jpg" alt="img">
+                                        <img src="upload/'.$AnhDaiDien.'" alt="img">
                                     </div>
-                                    <a href="#">'.$_SESSION['Username']['Username'].'</a>
+                                    <a href="#">'.$Username.'</a>
                                 </div>
                                 <div class="date">
                                     <i class="fa fa-clock-o"></i>
@@ -157,7 +157,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="section-title pb-0">
-                        <h4 class="title left-line">Phim Truyền Hình Việt Nam</h4>
+                        <h4 class="title left-line">Phim Việt Nam</h4>
                     </div>
                     <div class="row">
                         <?php
@@ -171,22 +171,22 @@
                                     <img src="'.$hinh.'" alt="img">
                                 </div>
                                 <div class="media-body ms-0">
-                                    <a class="tag top-right tag-pest" href="#">Business</a>
+                                    <a class="tag top-right tag-pest" href="#">'.$TenDanhMuc.'</a>
                                     <h4><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h4>
                                 </div>
                                 <div class="meta d-flex">
                                     <div class="author">
                                         <div class="thumb">
-                                            <img src="assets/img/banner/user.jpg" alt="img">
+                                            <img src="upload/'.$AnhDaiDien.'" alt="img">
                                         </div>
-                                        <a href="#">'.$_SESSION['Username']['Username'].'</a>
+                                        <a href="#">'.$Username.'</a>
                                     </div>
                                     <div class="date ms-auto">
                                         <i class="fa fa-clock-o"></i>
                                         '.$NgayDangTin.'						
                                     </div>
                                     <div class="comment ms-auto">
-                                        0
+                                        Lượt xem: '.$LuotXem.'
                                     </div>
                                 </div>
                             </div>
@@ -292,30 +292,37 @@
                     <div class="section-title pb-0">
                         <h4 class="title left-line">Phim Chiếu Rạp</h4>
                     </div>
-                    <div class="media-post-wrap mg-bottom-40">
-                        <div class="thumb mb-4">
-                            <img class="w-100" src="assets/img/blog/country-parliament.jpg" alt="img">
-                        </div>
-                        <div class="media-body ms-0">
-                            <a class="tag top-right tag-purple" href="#">Politics</a>
-                            <h2><a href="blog-category.html">Julian Assange charged in US, court document for an accidentally reveals changing the technology.</a></h2>
-                        </div>
-                        <div class="meta d-flex">
-                            <div class="author">
-                                <div class="thumb">
-                                    <img src="assets/img/banner/user.jpg" alt="img">
+                    <?php
+                        $dstt =  loadall_tintucuser4maxluotxem();
+                        foreach($dstt as $tt){
+                            extract($tt);
+                            $hinh =  $img_path.$HinhAnhTin;
+                            echo '<div class="media-post-wrap mg-bottom-40">
+                            <div class="thumb mb-4">
+                                <img class="w-100" src="'.$hinh.'" alt="img">
+                            </div>
+                            <div class="media-body ms-0">
+                                <a class="tag top-right tag-purple" href="#">'.$TenDanhMuc.'</a>
+                                <h2><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h2>
+                            </div>
+                            <div class="meta d-flex">
+                                <div class="author">
+                                    <div class="thumb">
+                                        <img src="upload/'.$AnhDaiDien.'" alt="img">
+                                    </div>
+                                    <a href="#">'.$Username.'</a>
                                 </div>
-                                <a href="#">Stiven Jackson</a>
+                                <div class="date">
+                                    <i class="fa fa-clock-o"></i>
+                                        '.$NgayDangTin.'						
+                                </div>
+                                <div class="comment">
+                                    Lượt xem: '.$LuotXem.'
+                                </div>
                             </div>
-                            <div class="date">
-                                <i class="fa fa-clock-o"></i>
-                                    Mar 16, 2022						
-                            </div>
-                            <div class="comment">
-                                0
-                            </div>
-                        </div>
-                    </div>
+                        </div>';
+                        }
+                    ?>
                     <div class="row">
                         <?php
                             $dstt = loadall_tintucuser4();
@@ -323,23 +330,17 @@
                                 extract($tt);
                                 $hinh =  $img_path.$HinhAnhTin;
                                 echo '<div class="col-lg-6">
-                                <div class="media-post-wrap-3 media">
+                                <div class="top-post-wrap mb-0">
                                     <div class="thumb">
-                                        <img src="'.$hinh.'" alt="img">
+                                        <img src="'.$hinh.'" alt="img" style="opacity: 1;">
+                                        
                                     </div>
-                                    <div class="media-body">
-                                        <h6><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h6>
-                                        <div class="meta d-flex">
-                                            <div class="tag"><a href="#">Technology</a></div>
-                                            <div class="date">
-                                                <i class="fa fa-clock-o"></i>
-                                                '.$NgayDangTin.'
-                                            </div>
-                                        </div>                                
+                                    <div class="top-post-details">
+                                        <a class="tag top-right tag-purple" href="#">'.$TenDanhMuc.'</a>
+                                        <h4><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h4>
                                     </div>
                                 </div>
                             </div>';
-
                             }
                         ?>
                         <!-- <div class="col-lg-6">
@@ -398,28 +399,35 @@
                         <h4 class="title left-line">Phim Hoa Ngữ - Hàn Quốc</h4>
                     </div>
                     <div class="video-area">
-                        <div class="top-post-wrap">
+                       <?php
+                        $dstt = loadall_tintucuser3maxluotxem();
+                        foreach($dstt as $tt){
+                            extract($tt);
+                            $hinh =  $img_path.$HinhAnhTin;
+                            echo ' <div class="top-post-wrap">
                             <div class="thumb">
-                                <img src="assets/img/blog/nature.jpg" alt="img" style="opacity: 1;">
+                                <img src="'.$hinh.'" alt="img" style="opacity: 1;">
                                 <a class="video-play-btn" href="#" data-effect="mfp-zoom-in"><img src="assets/img/icon/play.png" alt="img"></a>
                             </div>
                             <div class="top-post-details">
-                                <a class="tag top-right tag-green" href="#">Travel</a>
-                                <h2><a href="blog-category.html">I find that the harder I work, the more luck I seem to have.</a></h2>
+                                <a class="tag top-right tag-green" href="#">'.$TenDanhMuc.'</a>
+                                <h2><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h2>
                                 <div class="meta mt-2">
                                     <div class="user">
                                         <div class="thumb">
-                                            <img src="assets/img/banner/user.jpg" alt="img" style="opacity: 1;">
+                                            <img src="upload/'.$AnhDaiDien.'" alt="img" style="opacity: 1;">
                                         </div>
-                                        <a href="#">Stiven Jackson</a>
+                                        <a href="#">'.$Username.'</a>
                                     </div>
                                     <div class="date">
                                         <i class="fa fa-clock-o"></i>
-                                            Mar 16, 2022						
+                                            '.$NgayDangTin.'						
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>';
+                        }
+                       ?>
                         <div class="row">
                             <?php
                                 $dstt = loadall_tintucuser3();
@@ -433,7 +441,7 @@
                                             <a class="video-play-btn" href="#" data-effect="mfp-zoom-in"><img src="assets/img/icon/play.png" alt="img"></a>
                                         </div>
                                         <div class="top-post-details">
-                                            <a class="tag top-right tag-purple" href="#">Politics</a>
+                                            <a class="tag top-right tag-purple" href="#">'.$TenDanhMuc.'</a>
                                             <h4><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h4>
                                         </div>
                                     </div>
@@ -577,7 +585,7 @@
                     </div>
                 </div>
                 <?php
-                    $dstt = loadall_tintucuser();
+                    $dstt = loadall_tintucheaderhome();
                     foreach($dstt as $tt){
                         extract($tt);
                         $hinh =  $img_path.$HinhAnhTin;
@@ -587,22 +595,22 @@
                                 <img src="'.$hinh.'" alt="img">
                             </div>
                             <div class="media-body ms-0">
-                                <a class="tag top-right tag-yellow" href="#">Technology</a>
+                                <a class="tag top-right tag-yellow" href="#">'.$TenDanhMuc.'</a>
                                 <h4><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h4>
                             </div>
                             <div class="meta d-flex">
                                 <div class="author">
                                     <div class="thumb">
-                                        <img src="assets/img/banner/user.jpg" alt="img">
+                                        <img src="upload/'.$AnhDaiDien.'" alt="img">
                                     </div>
-                                    <a href="#">'.$_SESSION['Username']['Username'].'</a>
+                                    <a href="#">'.$Username.'</a>
                                 </div>
                                 <div class="date ms-auto">
                                     <i class="fa fa-clock-o"></i>
                                     '.$NgayDangTin.'						
                                 </div>
                                 <div class="comment ms-auto">
-                                    0
+                                    Lượt xem: '.$LuotXem.'
                                 </div>
                             </div>
                         </div>

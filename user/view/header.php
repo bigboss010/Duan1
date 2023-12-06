@@ -52,9 +52,19 @@
                     <div class="col-md-6 col-sm-6">
                         <?php 
                         if (!isset($_SESSION['Username'])){
-                            echo '<button><a href="user/login/dangnhap.php" ><i >Vui Lòng Đăng Nhập!</i></a></button>';
+                            echo '<a href="#" ><i ><img src="assets/img/banner/tải xuống (3).jpg" width="50px" alt=""></i></a>';
                          }else{
-                             echo '<button><a href="index.php?act=trangcanhan" ><i >Trang Cá Nhân</i></a></button>';
+                            $taikhoan = loadone_taikhoan($_SESSION['Username']['ID_User']);
+                            if(is_array($taikhoan)){
+                                extract($taikhoan);
+                                if(empty($AnhDaiDien)){
+                                    echo '<a href="index.php?act=trangcanhan" ><i ><img src="assets/img/banner/tải xuống (3).jpg" width="50px" alt=""></i></a>';
+                                }else{
+                                    echo '<a href="index.php?act=trangcanhan" ><i ><img src="upload/'.$AnhDaiDien.'" width="50px" alt=""></i></a>';
+                                }
+                            }else{
+                                echo '<a href="index.php?act=trangcanhan" ><i ><img src="assets/img/banner/tải xuống (3).jpg" width="50px" alt=""></i></a>';
+                            }  
                          }
                         echo "<br>";
                         if (isset($_SESSION['Username'])) {
@@ -72,24 +82,25 @@
                         
                         ?>
                     </div>
+                    
                     <div class="col-md-6 col-sm-6 text-end">
                            
                             <?php if (!isset($_SESSION['Username'])) { ?>
-                                <button><a href="user/login/dangnhap.php" ><i >Đăng nhập</i></a></button>
-                                <button><a href="user/login/dangky.php" ><i >Đăng ký</i></a></button>
+                                <button class="btn btn-primary btn-block"><a href="user/login/dangnhap.php" ><i >Đăng nhập</i></a></button>
+                                <button class="btn btn-primary btn-block"><a href="user/login/dangky.php" ><i >Đăng ký</i></a></button>
                             <?php } else { ?>
-                                <p>Hello <?=$_SESSION['Username']['Username']?></p>
+                               
                                 <?php
                                     if($_SESSION['Username']['Role'] == 1){
                                         $linkadmin = "admin/index.php";
                                         // $linkuser = "index.php?act=dangtin&ID_GoiDangTin=$ID_GoiDangTin";
-                                       echo "<button><a href='".$linkadmin."'>Đến Admin</a></button>";
+                                       echo "<button class='btn btn-primary btn-block'><a href='".$linkadmin."'>Đến Admin</a></button>";
                                     }else{
                                         // echo "<button><a href='".$linkuser."'>Đăng Bài</a></button>";
                                     }
                                 ?>
                                 
-                                <button><a href="user/login/dangxuat.php">Đăng xuất</a></button>
+                                <button class="btn btn-primary btn-block"><a href="user/login/dangxuat.php">Đăng xuất</a></button>
                             <?php  } ?>
                         <!-- <div class="htop_social">
                             <a href="#" class="social-list__link"><i class="fa fa-facebook-f"></i></a>
@@ -138,7 +149,7 @@
                             <a href="#">Danh mục tin tức</a>
                             <ul class="sub-menu">
                                 <li><a href="index.php?act=phimchieurap">Phim chiếu rạp</a></li>
-                                <li><a href="index.php?act=phimthvn">Phim truyền hình Việt Nam</a></li>
+                                <li><a href="index.php?act=phimvn">Phim Việt Nam</a></li>
                                 <li><a href="index.php?act=phimhqtq">Phim Hoa Ngữ - Hàn Quốc</a></li>
                             </ul>
                         </li>
@@ -151,7 +162,7 @@
                         </ul>
                         </li>
                         <li><a href="index.php?act=napcoins">Nạp Coins</a></li>
-                        <li><a href="index.php?act=lienhe">Liên hệ</a></li>
+                        <!-- <li><a href="index.php?act=lienhe">Liên hệ</a></li> -->
                     </ul>
                 </div>
                 <div class="nav-right-part nav-right-part-desktop">

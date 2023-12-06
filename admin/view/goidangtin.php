@@ -1,28 +1,35 @@
-<!-- Main content -->
-<section class="content">
 
-<!-- Default box -->
-<div class="card">
-  <div class="card-header">
-    <h3 class="card-title">Quản lí tin tức</h3>
-
-    <div class="card-tools">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-        <i class="fas fa-minus"></i>
-      </button>
-      <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-        <i class="fas fa-times"></i>
-      </button>
+     <!-- Content Wrapper. Contains page content -->
+     <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Quản lí gói đăng tin</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="index.php">Trang Chủ</a></li>
+              <li class="breadcrumb-item active">Quản lí gói đăng tin</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-  </div>
-  <div class="card-body p-0">
-    <table class="table table-striped projects">
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+        <table class="table table-striped projects">
         <thead>
             <tr>
                 <!-- <th style="width: 1%">
                     #
                 </th> -->
-                <th style="width: 20%">
+                <th style="width: 5%">
                 </th>
                 <th style="width: 10%">
                     ID Gói đăng tin
@@ -42,6 +49,9 @@
                 <th style="width: 10%">
                     Mua gói
                 </th>
+                <th style="width: 20%">
+                    Chức năng
+                </th>
                 <!-- <th style="width: 20%">
                 </th> -->
             </tr>
@@ -51,7 +61,7 @@
                 foreach ($listgdt as $gdt){
                     extract($gdt);
                     echo '<tr>
-                    <td> #</td>
+                    <td></td>        
                     <td>'.$ID_GoiDangTin.'</td>        
                     <td>'.$TenGoi.'</td>
                     <td>'.$ChuKy.'</td>
@@ -59,7 +69,7 @@
                     <td>'.$Mota.'</td>
                     <td><p >'.$MuaGoi.'</p></td>
                     <td class="project-actions text-right">
-                    <a class="btn btn-primary btn-sm" href="#">
+                    <a class="btn btn-primary btn-sm" href="http://localhost/Duan1/index.php?act=goidangtin">
                         <i class="fas fa-folder">
                         </i>
                         Xem
@@ -80,10 +90,17 @@
                 ?>
         </tbody>
     </table>
+       </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
   </div>
-  <!-- /.card-body -->
-</div>
-<!-- /.card -->
+  <!-- /.content-wrapper -->
 
-</section>
-<!-- /.content -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->

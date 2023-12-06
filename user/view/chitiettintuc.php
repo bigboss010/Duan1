@@ -1,11 +1,4 @@
-<style>
-td {
-    padding: 0 20px;
-}
-img{
-    width: 300px;
-}
-</style>
+
 <main class="catalo g  mb ">
     <div class="boxleft">
         <?php
@@ -17,7 +10,7 @@ img{
                 '.$TieuDeTin.'
             </div>
             <div class="box_content">
-                    <img src='.$hinh.';
+                    <img src="'.$hinh.'";
                     <p>'.$NoiDungTin.'</p>
                     <p>Lượt xem: '.$LuotXem.'</p>
     
@@ -28,7 +21,5 @@ img{
     </div>
 </main>
 <!-- <div class="boxright"> -->
-<?php
-include "user/view/boxright2.php";
-?>
+
 <!-- </div> -->

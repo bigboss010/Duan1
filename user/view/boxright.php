@@ -3,18 +3,18 @@
                         <h4 class="title left-line">Tin Tức Nổi Bật</h4>
                     </div>
                     <?php
-                        $dstt = loadall_tintucuser();
+                        $dstt = loadall_tintucheaderhome();
                         foreach($dstt as $tt){
                             extract($tt);
                             $hinh =  $img_path.$HinhAnhTin;
-                            echo '<div class="media-post-wrap-3 media">
+                            echo ' <div class="media-post-wrap-3 media">
                             <div class="thumb">
-                                <img src="'.$hinh.'" alt="img">
+                                <img src="'.$hinh.'" width="98px" height="98px" alt="img">
                             </div>
                             <div class="media-body">
-                                <h6><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h6>
+                                <h6><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'"></a></h6>
                                 <div class="meta d-flex">
-                                    <div class="tag"><a href="#">Politics</a></div>
+                                    <div class="tag"><a href="#">'.$TieuDeTin.'</a></div>
                                     <div class="date">
                                         <i class="fa fa-clock-o"></i>
                                         '.$NgayDangTin.'
@@ -24,7 +24,7 @@
                         </div>';
                         }
                     ?>
-                    <!-- <div class="media-post-wrap-3 media">
+                     <!-- <div class="media-post-wrap-3 media">
                         <div class="thumb">
                             <img src="assets/img/blog/parliament-img.jpg" alt="img">
                         </div>
@@ -38,8 +38,8 @@
                                 </div>
                             </div>                                
                         </div>
-                    </div>
-                    <div class="media-post-wrap-3 media">
+                    </div> -->
+                   <!-- <div class="media-post-wrap-3 media">
                         <div class="thumb">
                             <img src="assets/img/blog/paper-thumb.jpg" alt="img">
                         </div>
@@ -88,9 +88,9 @@
                                     <div class="meta d-flex">
                                         <div class="author">
                                             <div class="thumb">
-                                                <img src="assets/img/banner/user.jpg" alt="img">
+                                                <img src="upload/'.$AnhDaiDien.'" alt="img">
                                             </div>
-                                            <a href="#">'.$_SESSION['Username']['Username'].'</a>
+                                            <a href="#">'.$Username.'</a>
                                         </div>
                                         <div class="date">
                                             <i class="fa fa-clock-o"></i>

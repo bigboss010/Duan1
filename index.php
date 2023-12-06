@@ -103,9 +103,9 @@
                 include "user/view/phimcr.php";
                 break;
 
-            case "phimthvn":
+            case "phimvn":
                 $dstt = loadall_tintucuser2();
-                include "user/view/phimthvn.php";
+                include "user/view/phimvn.php";
                 break;
 
             case "phimhqtq":
@@ -124,16 +124,75 @@
                 include "user/view/about.php";
                 break;
             case "trangcanhan":
-                $dstt = loadall_tintuccanhan($ID_User);
-                $socoins = loadall_lscoins($ID_User);
                 include "user/view/trangcanhan.php";
+                break;
+            case "edit_tintuc":
+                if(isset($_GET['ID_TinTuc']) && ($_GET['ID_TinTuc'])){
+                    $tintuc = loadone_tintuc($_GET['ID_TinTuc']);
+                }
+                $listdanhmuctin = loadall_danhmuctin();
+                include "user/view/edit_tintuc.php";
+                break;
+            case "updatetintuc":
+                if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                    $ID_TinTuc = $_POST['ID_TinTuc'];
+                    $ID_DanhMuc = $_POST['ID_DanhMuc'];
+                    $TieuDeTin = $_POST['TieuDeTin'];
+                    $NoiDungTin = $_POST['NoiDungTin'];
+                    $NgayDangTin = date("Y-m-d H:i:s");
+                    $HinhAnhTin = $_FILES['HinhAnhTin']['name'];
+                    $target_dir = "upload/";
+                    $target_file = $target_dir.basename($_FILES['HinhAnhTin']['name']);
+                    if(move_uploaded_file($_FILES['HinhAnhTin']['tmp_name'], $target_file)){
+                        // echo "Thành công";
+                    }else{
+                        // echo "Lỗi";
+                    }
+                    update_tintuc($ID_TinTuc, $ID_DanhMuc, $TieuDeTin, $NoiDungTin, $HinhAnhTin,$NgayDangTin);
+                    $thongbao = "Cập nhật thành công";
+                }
+                include "user/view/trangcanhan.php";
+                break;
+            case "xoatintuc":
+                if(isset($_GET['ID_TinTuc']) && ($_GET['ID_TinTuc'])){
+                    $ID_TinTuc = $_GET['ID_TinTuc'];
+                    xoatinmem($ID_TinTuc);
+                }
+                include "user/view/trangcanhan.php";
+                break;
+            
+            case "edit_profile":
+                if(isset($_SESSION['Username']['ID_User']) && ($_SESSION['Username']['ID_User']>0)){
+                    $taikhoan = loadone_taikhoan($_SESSION['Username']['ID_User']);
+                }
+                include "user/view/edit_profile.php";
+                break;
+            case "updatetrangcn":
+                if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                    $ID_User = $_SESSION['Username']['ID_User'];
+                    $Username = $_POST['Username'];
+                    $Password = $_POST['Password'];
+                    $Email = $_POST['Email'];
+                    $Tel = $_POST['Tel'];
+                    $AnhDaiDien = $_FILES['AnhDaiDien']['name'];
+                    $target_dir = "upload/";
+                    $target_file = $target_dir.basename($_FILES['AnhDaiDien']['name']);
+                    if(move_uploaded_file($_FILES['AnhDaiDien']['tmp_name'], $target_file)){
+                        // echo "Thành công";
+                    }else{
+                        // echo "Lỗi";
+                    }
+                    update_taikhoan($ID_User, $Username, $Password, $Email, $Tel, $AnhDaiDien);
+                    $thongbao = "Cập nhật thành công";
+                }
+                include "user/view/edit_profile.php";
                 break;
             case "quenmk":
                 if (isset($_POST['guiemail'])) {
                     $Email = $_POST['Email'];
                     $sendMailMess = sendMail($Email);
                 }
-                include "user/login/quenmk.php";
+                include "user/view/login/quenmk.php";
                 break;
         }
     }else{

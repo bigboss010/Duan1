@@ -54,7 +54,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <li><button><a href="../index.php">Về User</a></button></a></li>
+      <button class="btn btn-warning btn-block" style="color:white;"><a href="../index.php">Về User</a></button>
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">

@@ -6,6 +6,7 @@
     include "../model/muahang.php";
     include "../model/danhmuctin.php";
     include "../model/binhluan.php";
+    include "../model/coins.php";
     include "view/header.php";
     include "view/boxleft.php"; 
     include "../global.php";
@@ -67,6 +68,14 @@
                 }
                 include "view/tintuc.php";
                 break;
+            case "khoiphuctt":
+                if (isset($_GET['ID_TinTuc'])) {
+                    $ID_TinTuc = $_GET['ID_TinTuc'];
+                    $result = khoiphucxoamem($ID_TinTuc);
+                    echo $result;
+                }
+                include "view/tintuc.php";
+                break;
             case "antin":
                 if (isset($_GET['ID_TinTuc'])) {
                     $ID_TinTuc = $_GET['ID_TinTuc'];
@@ -82,18 +91,30 @@
                 $listtaikhoan = loadall_taikhoan();
                 include "view/taikhoan.php";
                 break;
-            case 'qlthanhvien':
-                $listthanhvien = loadall_thanhvien();
-                include "view/thanhvien.php";
+            case 'qlmuahang':
+                $listmuahang = loadall_muahang();
+                include "view/muahang.php";
                 break;
-            case 'xoatk':
+            case 'qlnapcoins':
+                $listnapcoins = loadall_napcoins();
+                include "view/napcoins.php";
+                break;
+            case 'khoatk':
                     if (isset($_GET['ID_User'])&&($_GET['ID_User'])){
-                        delete_taikhoan($_GET['ID_User']);
+                        $ID_User = $_GET['ID_User'];
+                        khoa_taikhoan( $ID_User);
                     }    
                     $listtaikhoan = loadall_taikhoan();
                     include "view/taikhoan.php";
                     break;
-
+            case 'khoiphuctk':
+                    if (isset($_GET['ID_User'])&&($_GET['ID_User'])){
+                        $ID_User = $_GET['ID_User'];
+                        khoiphuc_taikhoan($ID_User);
+                    }    
+                    $listtaikhoan = loadall_taikhoan();
+                    include "view/taikhoan.php";
+                    break; 
             case 'qlgdt':
                 $listgdt = loadall_goidangtin();
                 include "view/goidangtin.php";

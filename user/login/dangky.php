@@ -108,8 +108,9 @@
             $listtaikhoan = loadall_taikhoanID();
             foreach($listtaikhoan as $tk){
               extract($tk);
+              $AnhDaiDien = "avatar.jpg";
               insert_NapCoins($MAXID_User);
-              
+              insert_anhdaidien($MAXID_User,$AnhDaiDien);
             }
         }
         ?>

@@ -6,6 +6,10 @@
         $sql="INSERT INTO `tai_khoan` ( `Username`, `Password`, `Email`, `Tel`) VALUES ( '$Username', '$Password', '$Email', '$Tel') ";
         pdo_execute($sql);
     }
+    function insert_anhdaidien($MAXID_User,$AnhDaiDien){
+        $sql = "UPDATE tai_khoan SET AnhDaiDien = ? WHERE ID_User = ?";
+        pdo_execute($sql, $AnhDaiDien, $MAXID_User);
+    }
 
     function loadall_taikhoan(){
         $sql="select * from tai_khoan order by ID_User desc";
@@ -17,6 +21,20 @@
         $sql="select MAX(ID_User) as MAXID_User from tai_khoan";
         $listtaikhoan=pdo_query($sql);
         return  $listtaikhoan;
+    }
+
+    function loadone_taikhoan($ID_User){
+        $sql = "select * from tai_khoan where ID_User = $ID_User";
+        $result = pdo_query_one($sql);
+        return $result;
+    }
+
+    function update_taikhoan($ID_User, $Username, $Password, $Email, $Tel, $AnhDaiDien){
+        if($AnhDaiDien!="")
+            $sql="update tai_khoan set Username='".$Username."', Password='".$Password."', Email='".$Email."', Tel='".$Tel."', AnhDaiDien='".$AnhDaiDien."' where ID_User =".$ID_User;
+        else
+            $sql="update tai_khoan set Username='".$Username."', Password='".$Password."', Email='".$Email."', Tel='".$Tel."' where ID_User =".$ID_User;
+        pdo_execute($sql);
     }
 
     function checkuser($Username, $Password){
@@ -40,6 +58,16 @@
         if (isset($_SESSION['Username'])) {
             unset($_SESSION['Username']);
         }
+    }
+
+    function khoa_taikhoan($ID_User) {
+        $query = "UPDATE tai_khoan SET Role = 2 WHERE ID_User = $ID_User";
+        pdo_execute($query);
+    }
+
+    function khoiphuc_taikhoan($ID_User) {
+        $query = "UPDATE tai_khoan SET Role = 0 WHERE ID_User = $ID_User";
+        pdo_execute($query);
     }
 
     function sendMail($Email) {

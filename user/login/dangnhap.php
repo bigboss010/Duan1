@@ -63,7 +63,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="forgot-password.html">Quên mật khẩu</a>
+        <a href="quenmk.php">Quên mật khẩu</a>
       </p>
       <p class="mb-0">
         <a href="dangky.php" class="text-center">Đăng kí</a>
@@ -83,6 +83,8 @@ if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
       $_SESSION['Username'] = $checkuser;
       if($_SESSION['Username']['Role']==1){
         header("Location: ../../admin/index.php");
+      }elseif($_SESSION['Username']['Role']==2){
+        echo "Tài khoản của bạn đã bị khóa, vui lòng liên hệ đội ngũ admin để biết thêm chi tiết!";
       }else{
         header("Location: ../../index.php");
       }
