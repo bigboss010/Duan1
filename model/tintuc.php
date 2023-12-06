@@ -145,8 +145,8 @@
         pdo_execute($query);
     }
     
-    function insert_tintuc($TieuDeTin, $NoiDungTin, $hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin,$NgayDangTin){
-        $sql="insert into tin_tuc(TieuDeTin,NoiDungTin,HinhAnhTin,ID_DanhMuc,ID_User,ID_GoiDangTin,NgayDangTin) values('$TieuDeTin', '$NoiDungTin', '$hinh', '$ID_DanhMuc', '$ID_User', '$ID_GoiDangTin', '$NgayDangTin')";
+    function insert_tintuc($TieuDeTin, $NoiDungTin, $hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin,$NgayDangTin,$TrangThai,$XoaMem){
+        $sql="insert into tin_tuc(TieuDeTin,NoiDungTin,HinhAnhTin,ID_DanhMuc,ID_User,ID_GoiDangTin,NgayDangTin,TrangThai,XoaMem) values('$TieuDeTin', '$NoiDungTin', '$hinh', '$ID_DanhMuc', '$ID_User', '$ID_GoiDangTin', '$NgayDangTin', '$TrangThai', '$XoaMem')";
         pdo_execute($sql);
     }
 
@@ -172,6 +172,28 @@
     FROM tin_tuc tt
     JOIN danh_muc_tin dm ON tt.ID_DanhMuc = dm.ID_DanhMuc
     JOIN tai_khoan tk ON tt.ID_User = tk.ID_User where tk.ID_User ='$ID_User' AND XoaMem = 'Chưa xóa'
+    order by ID_TinTuc 
+    desc limit 0,9";
+        $listtintuc=pdo_query($sql);
+        return  $listtintuc;
+    }
+
+    function loadall_tintuccungloai($ID_TinTuc,$ID_DanhMuc){
+        $sql="SELECT 
+        dm.ID_DanhMuc,
+        dm.TenDanhMuc,
+        tt.ID_TinTuc,
+        tt.TieuDeTin,
+        tt.NgayDangTin,
+        tt.HinhAnhTin,
+        tt.NoiDungTin,
+        tt.LuotXem,
+        tt.TrangThai,
+        tk.Username,
+        tk.AnhDaiDien
+    FROM tin_tuc tt
+    JOIN danh_muc_tin dm ON tt.ID_DanhMuc = dm.ID_DanhMuc
+    JOIN tai_khoan tk ON tt.ID_User = tk.ID_User where tt.ID_DanhMuc ='$ID_DanhMuc' AND ID_TinTuc <>'$ID_TinTuc'
     order by ID_TinTuc 
     desc limit 0,9";
         $listtintuc=pdo_query($sql);

@@ -79,23 +79,51 @@ if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
     $Username = $_POST['Username'];
     $Password = $_POST['Password'];
     $checkuser = checkuser($Username, $Password);
-    if(is_array($checkuser)){
-      $_SESSION['Username'] = $checkuser;
-      if($_SESSION['Username']['Role']==1){
-        header("Location: ../../admin/index.php");
-      }elseif($_SESSION['Username']['Role']==2){
-        echo "Tài khoản của bạn đã bị khóa, vui lòng liên hệ đội ngũ admin để biết thêm chi tiết!";
-      }else{
-        header("Location: ../../index.php");
-      }
-      
-    }else{
-      $thongbao = "Sai thông tin tài khoản hoặc mật khẩu";
-      echo $thongbao;
+
+    if (is_array($checkuser)) {
+        $_SESSION['Username'] = $checkuser;
+        if ($_SESSION['Username']['Role'] == 1) {
+            header("Location: ../../admin/index.php");
+            exit(); 
+        } elseif ($_SESSION['Username']['Role'] == 2) {
+            echo "Tài khoản của bạn đã bị khóa, vui lòng liên hệ đội ngũ admin để biết thêm chi tiết!";
+        } else {
+            header("Location: ../../index.php");
+            exit(); 
+        }
+    } else {
+        $thongbao = "Sai thông tin tài khoản hoặc mật khẩu";
+        echo $thongbao;
     }
-    
 }
 ?>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(event) {
+      const usernameInput = document.querySelector("[name='Username']");
+      const passwordInput = document.querySelector("[name='Password']");
+
+      // Kiểm tra trường Username
+      if (usernameInput.value.trim() === "") {
+        alert("Vui lòng nhập tên đăng nhập.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Kiểm tra trường Password
+      if (passwordInput.value.trim() === "") {
+        alert("Vui lòng nhập mật khẩu.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+    });
+  });
+</script>
+
+
 <!-- jQuery -->
 <script src="../../admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

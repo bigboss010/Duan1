@@ -7,14 +7,14 @@
                         foreach($dstt as $tt){
                             extract($tt);
                             $hinh =  $img_path.$HinhAnhTin;
-                            echo ' <div class="media-post-wrap-3 media">
+                            echo '<div class="media-post-wrap-3 media">
                             <div class="thumb">
                                 <img src="'.$hinh.'" width="98px" height="98px" alt="img">
                             </div>
                             <div class="media-body">
-                                <h6><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'"></a></h6>
+                                <h6><a href="index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">'.$TieuDeTin.'</a></h6>
                                 <div class="meta d-flex">
-                                    <div class="tag"><a href="#">'.$TieuDeTin.'</a></div>
+                                    <div class="tag"><a href="#">'.$TenDanhMuc.'</a></div>
                                     <div class="date">
                                         <i class="fa fa-clock-o"></i>
                                         '.$NgayDangTin.'
@@ -101,66 +101,7 @@
                             </div>';
                             }
                            ?>
-                            <!-- <div class="item">
-                                <div class="thumb">
-                                    <img src="assets/img/blog/2.png" alt="img">
-                                </div>
-                                <div class="details">
-                                    <p>When working remotely and having to manage your own time, it is not uncommon for breaks to be overlooked.</p>
-                                    <div class="meta d-flex">
-                                        <div class="author">
-                                            <div class="thumb">
-                                                <img src="assets/img/banner/user.jpg" alt="img">
-                                            </div>
-                                            <a href="#">Stiven Jackson</a>
-                                        </div>
-                                        <div class="date">
-                                            <i class="fa fa-clock-o"></i>
-                                                Mar 16, 2022						
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <img src="assets/img/blog/3.png" alt="img">
-                                </div>
-                                <div class="details">
-                                    <p>When working remotely and having to manage your own time, it is not uncommon for breaks to be overlooked.</p>
-                                    <div class="meta d-flex">
-                                        <div class="author">
-                                            <div class="thumb">
-                                                <img src="assets/img/banner/user.jpg" alt="img">
-                                            </div>
-                                            <a href="#">Stiven Jackson</a>
-                                        </div>
-                                        <div class="date">
-                                            <i class="fa fa-clock-o"></i>
-                                                Mar 16, 2022						
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="thumb">
-                                    <img src="assets/img/blog/4.png" alt="img">
-                                </div>
-                                <div class="details">
-                                    <p>When working remotely and having to manage your own time, it is not uncommon for breaks to be overlooked.</p>
-                                    <div class="meta d-flex">
-                                        <div class="author">
-                                            <div class="thumb">
-                                                <img src="assets/img/banner/user.jpg" alt="img">
-                                            </div>
-                                            <a href="#">Stiven Jackson</a>
-                                        </div>
-                                        <div class="date">
-                                            <i class="fa fa-clock-o"></i>
-                                                Mar 16, 2022						
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div> -->
+                           
                         </div>
                     </div>
                 </div>

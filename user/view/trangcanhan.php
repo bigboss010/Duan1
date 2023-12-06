@@ -1,13 +1,6 @@
 
     <style>
-        .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 cột với tỷ lệ chiều rộng bằng nhau */
-    grid-column-gap: 20px; /* Khoảng cách giữa cột */
-    grid-template-areas: 
-        "tieude tieude"
-        "shorten-content shorten-content";
-}
+       
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -68,7 +61,6 @@
     line-height: 1.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    
     grid-area: tieude; /* Đặt vị trí cột cho phần tiêu đề */
 }
 
@@ -132,8 +124,8 @@
                 <td><?php echo '<img src="upload/'.$HinhAnhTin.'" width="50px" alt="">'; ?></td>
                 <td><?php echo $NgayDangTin; ?></td>
                 <td><?php echo $TrangThai; ?></td>
-                <td><button><a href="index.php?act=edit_tintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Sửa</a></button><br>
-                <button><a href="index.php?act=xoatintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Xóa</a></button></td>
+                <td><button class="btn btn-info btn-sm"><a href="index.php?act=edit_tintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Sửa</a></button><hr>
+                <button class="btn btn-danger btn-sm"><a href="index.php?act=xoatintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Xóa</a></button></td>
             </tr>
         <?php } ?>
     </table><br>

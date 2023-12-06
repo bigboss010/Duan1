@@ -53,14 +53,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="input-group mb-3">
-          <input type="text" class="form-control" name="Role" placeholder="Role">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div> -->
         <div class="input-group mb-3">
           <input type="password" class="form-control" name="Password" placeholder="Password">
           <div class="input-group-append">
@@ -114,6 +106,82 @@
             }
         }
         ?>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(event) {
+      const usernameInput = document.querySelector("[name='Username']");
+      const emailInput = document.querySelector("[name='Email']");
+      const telInput = document.querySelector("[name='Tel']");
+      const passwordInput = document.querySelector("[name='Password']");
+      const retypePasswordInput = document.querySelector("[name='RetypePassword']");
+      const agreeTermsCheckbox = document.querySelector("[name='terms']");
+
+      // Kiểm tra tất cả các trường không được để trống
+      if (
+        usernameInput.value.trim() === "" ||
+        emailInput.value.trim() === "" ||
+        telInput.value.trim() === "" ||
+        passwordInput.value.trim() === "" ||
+        retypePasswordInput.value.trim() === ""
+      ) {
+        alert("Vui lòng điền đầy đủ thông tin.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Kiểm tra độ dài và ký tự của Username
+      const usernameRegex = /^\w{1,12}$/;
+      if (!usernameRegex.test(usernameInput.value.trim())) {
+        alert("Tên đăng nhập tối đa 12 ký tự, không cách và không trùng.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Kiểm tra độ dài của Password
+      if (passwordInput.value.trim().length < 8) {
+        alert("Mật khẩu phải có ít nhất 8 ký tự.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Kiểm tra trường Email không trùng
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        alert("Vui lòng nhập một địa chỉ email hợp lệ.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Kiểm tra trường Số điện thoại không trùng
+      // (Lưu ý: Cần một cơ chế kiểm tra trùng lặp bên server)
+      const telRegex = /^\d+$/;
+      if (!telRegex.test(telInput.value.trim())) {
+        alert("Vui lòng nhập một số điện thoại hợp lệ.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Kiểm tra trường Password và Retype Password khớp nhau
+      if (retypePasswordInput.value.trim() !== passwordInput.value.trim()) {
+        alert("Mật khẩu nhập lại không khớp.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Kiểm tra checkbox Điều khoản
+      if (!agreeTermsCheckbox.checked) {
+        alert("Vui lòng đồng ý với Điều khoản.");
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        return;
+      }
+
+      // Nếu mọi thứ đều hợp lệ, form sẽ được gửi đi như thường lệ
+    });
+  });
+</script>
 
       <!-- <div class="social-auth-links text-center">
         <p>- OR -</p>

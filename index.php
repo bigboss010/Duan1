@@ -68,6 +68,8 @@
                     $TieuDeTin = $_POST['TieuDeTin'];
                     $NoiDungTin = $_POST['NoiDungTin'];
                     $NgayDangTin = date("Y-m-d H:i:s");
+                    $TrangThai = "Chưa duyệt";
+                    $XoaMem = "Chưa xóat";
                     $hinh = $_FILES['HinhAnhTin']['name'];
                     $target_dir = "upload/";
                     $target_file = $target_dir.basename($_FILES['HinhAnhTin']['name']);
@@ -76,7 +78,7 @@
                     }else{
                         echo "Upload ảnh không thành công!";
                     }
-                    insert_tintuc($TieuDeTin,$NoiDungTin,$hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin,$NgayDangTin);
+                    insert_tintuc($TieuDeTin,$NoiDungTin,$hinh,$ID_DanhMuc,$ID_User,$ID_GoiDangTin,$NgayDangTin,$TrangThai,$XoaMem);
                     $thanhcong = "Thêm thành công, vui lòng chờ admin xét duyệt!";
                     }
                 $listdanhmuctin = loadall_danhmuctin();

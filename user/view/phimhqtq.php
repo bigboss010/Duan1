@@ -50,3 +50,5 @@
         </div>
     </div>
     <!-- blog-area end -->
+    </div>
+                            </div>
