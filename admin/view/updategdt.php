@@ -1,3 +1,9 @@
+
+<?php
+    if(isset($gdt)){
+        extract($gdt);
+    }
+?>
 <style>
       #e{
           background-color: #FF9999;
@@ -24,19 +30,19 @@
           margin-left: 440px
         }
     </style>
-   <!-- Content Wrapper. Contains page content -->
+ <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Thêm Mới Danh Mục</h1>
+            <h1 class="m-0">Sửa gói đăng tin</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Trang Chủ</a></li>
-              <li class="breadcrumb-item active">Thêm Mới Danh Mục</li>
+              <li class="breadcrumb-item active">Sửa gói đăng tin</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -48,27 +54,36 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-        <form action="index.php?act=adddm" method="POST">
-           <div class="row2 mb10 form_content_container">
+        <form action="index.php?act=updategdt" method="POST">
+        <div class="row2 mb10 form_content_container">
               <div class="row2 mb10">
-                <label> ID Danh Mục:</label> <br>
-                  <input type="text" name="ID_DanhMuc" placeholder="ID_DanhMuc là tự động" disabled>
+                <label>Tên Gói:</label> <br>
+                  <input type="text" name="TenGoi" value="<?=$TenGoi?>">
             </div>
            </div>
            <div class="row2 mb10">
-            <label>Tên Danh Mục:</label> <br>
-            <input type="text" name="TenDanhMuc" placeholder="Nhập vào tên danh mục">
+            <label>Chu kỳ:</label> <br>
+            <input type="text" name="ChuKy" value="<?=$ChuKy?>">
+           </div>
+           <div class="row2 mb10">
+            <label>Giá Gói:</label> <br>
+            <input type="text" name="Gia" value="<?=$Gia?>">
+           </div>
+           <div class="row2 mb10">
+            <label>Mô Tả Gói:</label> <br>
+            <textarea name="Mota" id="" cols="30" rows="10"><?=$Mota?></textarea>
            </div>
            <div class="row mb10 ">
-         <input class="mr20" type="submit" name="themmoi" value="THÊM MỚI">
+           <input type="hidden" name="ID_GoiDangTin" value="<?php if(isset($ID_GoiDangTin)&&($ID_GoiDangTin>0)) echo $ID_GoiDangTin; ?>">
+         <input class="mr20" type="submit" name="capnhat" value="CẬP NHẬT">
          <input  class="mr20" type="reset" value="NHẬP LẠI">
 
-         <a href="index.php?act=qldanhmuctin"><input  class="mr20" type="button" value="DANH SÁCH"></a>
+         <a href="index.php?act=qlgdt"><input  class="mr20" type="button" value="DANH SÁCH"></a>
            </div>
-           <?php
+          </form>
+          <?php
                     if(isset($thongbao)&&($thongbao!="")) echo $thongbao;
                     ?>
-          </form>
        </div>
         <!-- /.row -->
       </div>
@@ -83,6 +98,3 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-
-
-  

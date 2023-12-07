@@ -92,6 +92,10 @@
             <td><?php echo $Username?></td>
         </tr>
         <tr>
+            <td>Coins:</td>
+            <td><?php echo '$'.$Coins;?></td>
+        </tr>
+        <tr>
             <td>Email:</td>
             <td><?php echo $Email;?></td>
         </tr>
@@ -100,7 +104,8 @@
             <td><?php echo $Tel;?></td>
         </tr>
     </table><br>
-    <button><a href="index.php?act=edit_profile">Chỉnh Sửa Thông Tin Cá Nhân</a></button>
+    <button class="btn btn-primary btn-sm"><a href="index.php?act=edit_profile">Chỉnh Sửa Thông Tin Cá Nhân</a></button>
+    <button class="btn btn-info btn-sm"><a href="user/login/doimk.php">Đổi Mật Khẩu</a></button>
     <hr>
 
 
@@ -129,6 +134,7 @@
             </tr>
         <?php } ?>
     </table><br>
+    <button class="btn btn-primary btn-sm"><a href="index.php?act=goidangtincuatoi">Thêm bài viết</a></button>
     <hr>
 
     <h2>Lịch Sử Nạp Coins Gần Nhất</h2>
@@ -144,8 +150,8 @@
         extract($coins); ?>
             <tr>
                 <td><?php echo $NgayNap; ?></td>
-                <td><?php echo $SoTien; ?></td>
-                <td><?php echo $Coins; ?></td>
+                <td><?php echo $SoTien.' VND'; ?></td>
+                <td><?php echo '$'.$CoinsNhan; ?></td>
                 <td><?php echo $PTTT; ?></td>
             </tr>
         <?php } ?>

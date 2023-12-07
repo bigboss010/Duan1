@@ -31,7 +31,7 @@
                 </th> -->
                 <th style="width: 3%">
                 </th>
-                <th style="width: 5%">
+                <th style="width: 7%">
                     ID Tin Tức
                 </th>
                 <th style="width: 10%">
@@ -43,13 +43,13 @@
                 <th style="width: 10%">
                     Ảnh
                 </th>
-                <th style="width: 10%">
+                <th style="width: 8%">
                     Trạng thái
                 </th>
-                <th style="width: 10%">
+                <th style="width: 11%">
                     Khách hàng xóa
                 </th>
-                <th style="width: 19%">
+                <th style="width: 23%">
                     Chức năng
                 </th>
                 <!-- <th style="width: 20%">

@@ -4,6 +4,32 @@
         extract($dm);
     }
 ?>
+<style>
+      #e{
+          background-color: #FF9999;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .content{
+          margin-left: 440px
+        }
+    </style>
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -30,11 +56,11 @@
         <div class="row">
         <form action="index.php?act=updatedm" method="POST">
            <div class="row2 mb10 form_content_container">
-           <label> Mã loại </label> <br>
+           <label>ID Danh Mục:</label> <br>
             <input type="text" name="ID_DanhMuc" value="<?=$ID_DanhMuc?>" disabled>
            </div>
            <div class="row2 mb10">
-            <label>Tên loại </label> <br>
+            <label>Tên Danh Mục:</label> <br>
             <input type="text" name="TenDanhMuc" value="<?=$TenDanhMuc?>">
            </div>
            <div class="row mb10 ">
@@ -42,7 +68,7 @@
          <input class="mr20" type="submit" name="capnhat" value="CẬP NHẬT">
          <input  class="mr20" type="reset" value="NHẬP LẠI">
 
-         <a href="index.php?act=listdm"><input  class="mr20" type="button" value="DANH SÁCH"></a>
+         <a href="index.php?act=qldanhmuctin"><input  class="mr20" type="button" value="DANH SÁCH"></a>
            </div>
           </form>
           <?php

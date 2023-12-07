@@ -3,8 +3,8 @@ include "model/pdo.php";
 include "model/coins.php";
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $ID_User = $_POST['ID_User'];
-$NewCoins = $_POST['Coins'];
-$NewSoTien = $_POST['SoTien'];
+$CoinsNhan = $_POST['Coins'];
+$SoTien = $_POST['SoTien'];
 $NgayNap = date("Y-m-d H:i:s");
 function execPostRequest($url, $data)
 {
@@ -26,7 +26,9 @@ function execPostRequest($url, $data)
 }
 
 if(isset($_POST['cod'])){
-    updateCoinsNap($NewCoins,$NewSoTien,$ID_User);
+    $PTTT = "Tiền mặt";
+    insertNapCoins($CoinsNhan,$SoTien,$ID_User,$NgayNap,$PTTT);
+    updateCoins($CoinsNhan,$ID_User);
     header("Location: index.php?act=thanhtoantc");
 }elseif(isset($_POST['momo'])){
     
@@ -76,11 +78,13 @@ $extraData = "";
         'signature' => $signature);
     $result = execPostRequest($endpoint, json_encode($data));
     $jsonResult = json_decode($result, true);  // decode json
-    $PTTT = $orderInfo;
-    updateCoinsNap($NewCoins,$NewSoTien,$ID_User,$NgayNap,$PTTT);
+    
     //Just a example, please check more in there
 
     header('Location: ' . $jsonResult['payUrl']);
+    $PTTT = $orderInfo;
+    insertNapCoins($CoinsNhan,$SoTien,$ID_User,$NgayNap,$PTTT);
+    updateCoins($CoinsNhan,$ID_User);
 
 }elseif(isset($_POST['redirect'])){
 
@@ -93,9 +97,9 @@ $vnp_TmnCode = "CGXZLS0Z";//Mã website tại VNPAY
 $vnp_HashSecret = "XNBCJFAKAZQSGTARRLGCHVZWCIOIGSHN"; //Chuỗi bí mật
 
 $vnp_TxnRef = rand(00,9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-$vnp_OrderInfo = 'Nội dung thanh toán';
+$vnp_OrderInfo = 'Thanh toán VNpay';
 $vnp_OrderType = 'billpayment';
-$vnp_Amount = 10000 * 100;
+$vnp_Amount = $SoTien * 100;
 $vnp_Locale = 'VN';
 $vnp_BankCode = 'NCB';
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -183,6 +187,9 @@ $returnData = array('code' => '00'
     , 'message' => 'success'
     , 'data' => $vnp_Url);
     if (isset($_POST['redirect'])) {
+        $PTTT = $vnp_OrderInfo;
+    insertNapCoins($CoinsNhan,$SoTien,$ID_User,$NgayNap,$PTTT);
+    updateCoins($CoinsNhan,$ID_User);
         header('Location: ' . $vnp_Url);
         die();
     } else {

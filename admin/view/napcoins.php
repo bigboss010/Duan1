@@ -31,11 +31,11 @@
                 </th> -->
                 <th style="width: 5%">
                 </th>
-                <th style="width: 10%">
+                <th style="width: 12%">
                     ID Nạp Coins
                 </th>
-                <th style="width: 10%">
-                    ID User
+                <th style="width: 15%">
+                    Người Nạp
                 </th>
                 <th style="width: 10%"> 
                     Số Tiền Nạp
@@ -44,6 +44,9 @@
                     Coins Nhận
                 </th>
                 <th style="width: 10%">
+                    Ngày Nạp
+                </th>
+                <th style="width: 15%">
                     PTTT
                 </th>
                 <!-- <th style="width: 20%">
@@ -58,9 +61,10 @@
         echo '<tr>
                 <td></td>
                 <td>'.$ID_NapCoins.'</td>
-                <td>'.$ID_User.'</td>
-                <td>'.$SoTien.'</td>
-                <td>'.$Coins.'</td>
+                <td>'.$Username.'</td>
+                <td>'.$SoTien.' VND</td>
+                <td>$'.$CoinsNhan.'</td>
+                <td>'.$NgayNap.'</td>
                 <td>'.$PTTT.'</td>
                 <td></td>
             </tr>';

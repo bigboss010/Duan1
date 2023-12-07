@@ -31,7 +31,7 @@
                 </th> -->
                 <th style="width: 5%">
                 </th>
-                <th style="width: 10%">
+                <th style="width: 12%">
                     ID Gói đăng tin
                 </th>
                 <th style="width: 10%">
@@ -49,7 +49,7 @@
                 <th style="width: 10%">
                     Mua gói
                 </th>
-                <th style="width: 20%">
+                <th style="width: 25%">
                     Chức năng
                 </th>
                 <!-- <th style="width: 20%">
@@ -65,21 +65,26 @@
                     <td>'.$ID_GoiDangTin.'</td>        
                     <td>'.$TenGoi.'</td>
                     <td>'.$ChuKy.'</td>
-                    <td>'.$Gia.'</td>
+                    <td>$'.$Gia.'</td>
                     <td>'.$Mota.'</td>
                     <td><p >'.$MuaGoi.'</p></td>
                     <td class="project-actions text-right">
-                    <a class="btn btn-primary btn-sm" href="http://localhost/Duan1/index.php?act=goidangtin">
+                    <a class="btn btn-primary btn-sm" href="http://localhost/Duan1/index.php?act=muagoi&ID_GoiDangTin='.$ID_GoiDangTin.'">
                         <i class="fas fa-folder">
                         </i>
                         Xem
                     </a>
-                    <a class="btn btn-info btn-sm" href="#">
+                    <a class="btn btn-info btn-sm" href="index.php?act=addgdt">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Thêm
+                    </a>
+                    <a class="btn btn-info btn-sm" href="index.php?act=suagdt&ID_GoiDangTin='.$ID_GoiDangTin.'">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Sửa
                     </a>
-                    <a class="btn btn-danger btn-sm" href="#">
+                    <a class="btn btn-danger btn-sm" href="index.php?act=xoagdt&ID_GoiDangTin='.$ID_GoiDangTin.'">
                         <i class="fas fa-trash">
                         </i>
                         Xóa

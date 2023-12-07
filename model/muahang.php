@@ -5,7 +5,11 @@
     }
 
     function loadall_muahang(){
-        $sql="select * from mua_hang order by ID_MuaHang desc";
+        $sql="SELECT mua_hang.*, tk.Username, gdt.TenGoi, gdt.Gia
+        from mua_hang 
+        LEFT JOIN tai_khoan tk ON mua_hang.ID_User = tk.ID_User
+        LEFT JOIN goi_dang_tin gdt ON mua_hang.ID_GoiDangTin = gdt.ID_GoiDangTin
+        order by mua_hang.ID_MuaHang desc";
         $listmuahang=pdo_query($sql);
         return  $listmuahang;
     }

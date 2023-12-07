@@ -67,7 +67,7 @@
                                 <td>'.$TieuDeTin.'</td>
                                 <td>'.$TrangThai.'</td>
                                 <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="../index.php?act=chitiettintuc&ID_TinTuc='.$ID_TinTuc.'">
                                     <i class="fas fa-folder">
                                     </i>
                                     Xem

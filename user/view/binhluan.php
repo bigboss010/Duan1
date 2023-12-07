@@ -84,7 +84,8 @@
                 $ID_User = $_SESSION['Username']['ID_User'];
                 $NgayBinhLuan =date("Y-m-d H:i:s");
                 insert_binhluan($NDBinhLuan,$ID_User,$ID_TinTuc,$NgayBinhLuan);
-                header("Location: ".$_SERVER['HTTP_REFERER']);
+                header("Location: {$_SERVER['HTTP_REFERER']}");
+                exit();
             }
         ?>
 </div>

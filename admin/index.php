@@ -36,7 +36,7 @@
                     $TenDanhMuc=$_POST['TenDanhMuc'];
                     $ID_DanhMuc=$_POST['ID_DanhMuc'];
                     update_danhmuc($ID_DanhMuc, $TenDanhMuc);
-                    $thongbao="Cập nhật thành công";
+                    $thongbao="Cập nhật thành công!";
                 }
                 // $sql="select * from danh_muc_tin order by ID_DanhMuc desc";
                 // $listdanhmuc= pdo_query($sql);
@@ -48,7 +48,7 @@
                 if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
                     $TenDanhMuc=$_POST['TenDanhMuc'];
                     insert_danhmuc($TenDanhMuc);
-                    $thongbao="Thêm thành công";
+                    $thongbao="Thêm thành công!";
                 }
                 include "view/adddm.php";
                 break;
@@ -58,6 +58,46 @@
                 }    
                 $listdanhmuc = loadall_danhmuctin();
                 include "view/danhmuctin.php";
+                break;
+            case 'addgdt' :
+                //kiểm tra xem người dùng có click vào nút add hay không
+                if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
+                    $TenGoi = $_POST['TenGoi'];
+                    $ChuKy = $_POST['ChuKy'];
+                    $Gia = $_POST['Gia'];
+                    $Mota = $_POST['Mota'];
+                    insert_gdt($TenGoi, $ChuKy, $Gia, $Mota);
+                    $thongbao="Thêm thành công!";
+                }
+                    include "view/addgdt.php";
+                    break;
+            case 'suagdt':
+                    if(isset($_GET['ID_GoiDangTin'])&&($_GET['ID_GoiDangTin']>0)){
+                    $gdt=loadone_goidangtin($_GET['ID_GoiDangTin']);
+                    }
+                    $listgdt = loadall_goidangtin();
+                    include "view/updategdt.php";
+                    break;
+                    
+            case 'updategdt':
+                    if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                        $ID_GoiDangTin = $_POST['ID_GoiDangTin'];
+                        $TenGoi = $_POST['TenGoi'];
+                        $ChuKy = $_POST['ChuKy'];
+                        $Gia = $_POST['Gia'];
+                        $Mota = $_POST['Mota'];
+                        update_gdt($ID_GoiDangTin, $TenGoi, $ChuKy, $Gia, $Mota);
+                        $thongbao="Cập nhật thành công!";
+                    }
+                    $listgdt = loadall_goidangtin();
+                    include "view/goidangtin.php";
+                    break;
+            case 'xoagdt':
+                if (isset($_GET['ID_GoiDangTin'])&&($_GET['ID_GoiDangTin'])){
+                    delete_gdt($_GET['ID_GoiDangTin']);
+                }    
+                $listgdt = loadall_goidangtin();
+                include "view/goidangtin.php";
                 break;
 
             case "duyettin":

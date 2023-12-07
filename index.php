@@ -44,20 +44,6 @@
                 include "user/view/xulycoins.php";
                 break;
             case "thanhtoantc":
-                if(isset($_GET['partnerCode'])){
-                    $data_momo = [
-                        'partnerCode' => $_GET['partnerCode'],
-                        'orderId' => $_GET['orderId'],
-                        'requestId' => $_GET['requestId'],
-                        'amount' => $_GET['amount'],
-                        'orderInfo' => $_GET['orderInfo'],
-                        'orderType' => $_GET['orderType'],
-                        'transId' => $_GET['transId'],
-                        'payType' => $_GET['payType'],
-                        'signature' => $_GET['signature']
-                    ];
-                    insert_momo($data_momo);
-                }
                 include "user/view/thanhtoantc.php";
                 break;
             case "dangtin":
@@ -69,7 +55,7 @@
                     $NoiDungTin = $_POST['NoiDungTin'];
                     $NgayDangTin = date("Y-m-d H:i:s");
                     $TrangThai = "Chưa duyệt";
-                    $XoaMem = "Chưa xóat";
+                    $XoaMem = "Chưa xóa";
                     $hinh = $_FILES['HinhAnhTin']['name'];
                     $target_dir = "upload/";
                     $target_file = $target_dir.basename($_FILES['HinhAnhTin']['name']);
@@ -173,7 +159,6 @@
                 if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
                     $ID_User = $_SESSION['Username']['ID_User'];
                     $Username = $_POST['Username'];
-                    $Password = $_POST['Password'];
                     $Email = $_POST['Email'];
                     $Tel = $_POST['Tel'];
                     $AnhDaiDien = $_FILES['AnhDaiDien']['name'];
@@ -184,10 +169,10 @@
                     }else{
                         // echo "Lỗi";
                     }
-                    update_taikhoan($ID_User, $Username, $Password, $Email, $Tel, $AnhDaiDien);
+                    update_taikhoan($ID_User, $Username, $Email, $Tel, $AnhDaiDien);
                     $thongbao = "Cập nhật thành công";
                 }
-                include "user/view/edit_profile.php";
+                include "http://localhost/duan1/index.php?act=trangcanhan";
                 break;
             case "quenmk":
                 if (isset($_POST['guiemail'])) {

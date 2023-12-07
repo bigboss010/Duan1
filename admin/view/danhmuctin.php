@@ -28,13 +28,13 @@
             <tr>
                 <th style="width: 5%">
                 </th>
-                <th style="width: 5%">
+                <th style="width: 10%">
                     ID Danh Mục
                 </th>
-                <th style="width: 10%">
+                <th style="width: 15%">
                     Tên Danh Mục
                 </th>
-                <th style="width: 10%">
+                <th style="width: 15%">
                     Chức năng
                 </th>
                 <th style="width: 10%"> 
@@ -57,6 +57,11 @@
                             <a class="btn btn-primary btn-sm" href="index.php?act=adddm">
                                 <i class="fas fa-folder">
                                 </i>
+                                Xem
+                            </a>
+                            <a class="btn btn-info btn-sm" href="index.php?act=adddm">
+                            <i class="fas fa-pencil-alt">
+                            </i>
                                 Thêm
                             </a>
                             <a class="btn btn-info btn-sm" href="index.php?act=suadm&ID_DanhMuc='.$ID_DanhMuc.'">

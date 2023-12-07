@@ -29,5 +29,18 @@
         return $result;
     }
 
-    
+    function insert_gdt($TenGoi, $ChuKy, $Gia, $Mota){
+        $sql="insert into goi_dang_tin(TenGoi,ChuKy,Gia,Mota) values('$TenGoi', '$ChuKy', '$Gia', '$Mota')";
+        pdo_execute($sql);
+    }
+
+    function delete_gdt($ID_GoiDangTin){
+        $sql="delete from goi_dang_tin where ID_GoiDangTin=".$ID_GoiDangTin;
+        pdo_execute($sql);
+    }
+
+    function update_gdt($ID_GoiDangTin, $TenGoi, $ChuKy, $Gia, $Mota){
+        $sql="update goi_dang_tin set TenGoi='".$TenGoi."', ChuKy='".$ChuKy."', Gia='".$Gia."', Mota='".$Mota."' where ID_GoiDangTin=".$ID_GoiDangTin;
+        pdo_execute($sql);
+    }
 ?>

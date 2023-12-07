@@ -29,6 +29,5 @@ function loadone_danhmuctin($ID_DanhMuc){
 }
 function update_danhmuc($ID_DanhMuc, $TenDanhMuc){
     $sql="update danh_muc_tin set TenDanhMuc='".$TenDanhMuc."' where ID_DanhMuc=".$ID_DanhMuc;
-    // UPDATE `danh_muc_tin` SET `TenDanhMuc` = 'Phim chiếu rạp gggkl' WHERE `danh_muc_tin`.`ID_DanhMuc` = 4;
     pdo_execute($sql);
 }

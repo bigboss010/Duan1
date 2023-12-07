@@ -27,7 +27,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
 					<h1 class="theme-breacrumb-title">Thêm mới tin tức</h1>
-          <form action="index.php?act=dangtin&ID_GoiDangTin=<?php if (isset($_GET['ID_GoiDangTin'])) {
+          <form id="tinTucForm" action="index.php?act=dangtin&ID_GoiDangTin=<?php if (isset($_GET['ID_GoiDangTin'])) {
             $ID_GoiDangTin = ($_GET['ID_GoiDangTin']);
             echo $ID_GoiDangTin;
             }?>" method="POST" enctype="multipart/form-data">
@@ -76,6 +76,43 @@
     <script src="ckeditor/ckeditor.js"></script>
     <script>
                         CKEDITOR.replace( 'NoiDungTin' );
+            $(document).ready(function () {
+            // Intercept form submission
+            $('#tinTucForm').submit(function (e) {
+                // Kiểm tra trường Tiêu đề tin
+                if ($('input[name="TieuDeTin"]').val() === "") {
+                    alert("Vui lòng nhập tiêu đề tin.");
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Kiểm tra trường Danh mục tin
+                if ($('select[name="ID_DanhMuc"]').val() === "") {
+                    alert("Vui lòng chọn danh mục tin.");
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Kiểm tra trường Hình ảnh
+                if ($('input[name="HinhAnhTin"]').val() === "") {
+                    alert("Vui lòng chọn hình ảnh tin.");
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Kiểm tra trường Nội dung tin
+                if (CKEDITOR.instances.NoiDungTin.getData() === "") {
+                    alert("Vui lòng nhập nội dung tin.");
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Thêm các kiểm tra cho các trường khác nếu cần
+
+                // Nếu tất cả các kiểm tra đều đúng, cho phép submit form
+                return true;
+            });
+        });
                 </script>
 				</div>
   </div>

@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Quản lí mua gói</h1>
+            <h1 class="m-0">Quản lí lịch sử mua gói</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Trang Chủ</a></li>
-              <li class="breadcrumb-item active">Quản lí mua gói</li>
+              <li class="breadcrumb-item active">Quản lí lịch sử mua gói</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,13 +35,16 @@
                     ID Mua Gói
                 </th>
                 <th style="width: 10%">
-                    ID User
-                </th>
-                <th style="width: 10%">
-                    Ngày Mua
+                    Người Mua
                 </th>
                 <th style="width: 10%">
                     Gói Mua
+                </th>
+                <th style="width: 10%">
+                    Giá Gói
+                </th>
+                <th style="width: 10%">
+                    Ngày Mua
                 </th>
                 <th style="width: 10%">
                     
@@ -58,9 +61,10 @@
         echo '<tr>
                 <td></td>
                 <td>'.$ID_MuaHang.'</td>
-                <td>'.$ID_User.'</td>
+                <td>'.$Username.'</td>
+                <td>'.$TenGoi.'</td>
+                <td>$'.$Gia.'</td>
                 <td>'.$NgayMua.'</td>
-                <td>'.$ID_GoiDangTin.'</td>
                 <td></td>
             </tr>';
     } 

@@ -42,10 +42,6 @@
                 <input type="text" name="Username" value="<?=$Username?>">
                 </div>
             <div class="row2 mb10">
-                <label>Mật khẩu:</label> <br>
-                <input type="text" name="Password" value="<?=$Password?>">
-            </div>
-            <div class="row2 mb10">
                 <label>Email: </label> <br>
                 <input type="text" name="Email" value="<?=$Email?>">
             </div>
@@ -60,12 +56,17 @@
             </div>
                 <input class="mr20" name="capnhat" type="submit" value="Cập Nhật">
                 <input  class="mr20" type="reset" value="Nhập Lại">
+                <button class="btn btn-info btn-sm"><a href="index.php?act=trangcanhan">Quay lại</a></button>
             </div>
                 <?php
                 if(isset($thanhcong) && ($thanhcong!="")){
                 echo $thanhcong;
                 }
                 ?>
+            
+          <!-- /.col -->
+          <!-- /.col -->
+       
          </form>
             
 		</div>

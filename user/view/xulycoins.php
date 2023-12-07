@@ -4,7 +4,6 @@
             $ID_User = $_POST['ID_User'];
             $ID_GoiDangTin = $_POST['ID_GoiDangTin'];
             $NgayMua = date("Y-m-d H:i:s");
-            $NgayNap = date("Y-m-d H:i:s");
             $socoins = loadall_coins($ID_User);
             $goidangtin = loadone_goidangtin($ID_GoiDangTin);
             extract($goidangtin);
@@ -13,7 +12,7 @@
                     extract($coins);
                     if($Coins>=$Gia){
                         $Coins=$Coins-$Gia;
-                        $coinsUpdate = tinhCoins($Coins,$ID_User,$NgayNap);       
+                        $coinsUpdate = tinhCoins($Coins,$ID_User);       
                         $MuaGoi = duyetMuaGoi($ID_GoiDangTin);
                         $result = duyetMuaHang($ID_User, $ID_GoiDangTin, $NgayMua);
                         include "thanhtoantc.php";  

@@ -29,14 +29,18 @@
         return $result;
     }
 
-    function update_taikhoan($ID_User, $Username, $Password, $Email, $Tel, $AnhDaiDien){
+    function update_taikhoan($ID_User, $Username, $Email, $Tel, $AnhDaiDien){
         if($AnhDaiDien!="")
-            $sql="update tai_khoan set Username='".$Username."', Password='".$Password."', Email='".$Email."', Tel='".$Tel."', AnhDaiDien='".$AnhDaiDien."' where ID_User =".$ID_User;
+            $sql="update tai_khoan set Username='".$Username."', Email='".$Email."', Tel='".$Tel."', AnhDaiDien='".$AnhDaiDien."' where ID_User =".$ID_User;
         else
-            $sql="update tai_khoan set Username='".$Username."', Password='".$Password."', Email='".$Email."', Tel='".$Tel."' where ID_User =".$ID_User;
+            $sql="update tai_khoan set Username='".$Username."', Email='".$Email."', Tel='".$Tel."' where ID_User =".$ID_User;
         pdo_execute($sql);
     }
 
+    function update_password($newPassword,$ID_User){
+        $sql="update tai_khoan set  Password ='".$newPassword."' where ID_User =".$ID_User;
+        pdo_execute($sql);
+    }
     function checkuser($Username, $Password){
         $sql = "select * from tai_khoan where Username ='".$Username."' AND Password='".$Password."'";
         $result = pdo_query_one($sql);

@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Quản lí nạp coins</h1>
+            <h1 class="m-0">Quản lí tài khoản</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="index.php">Trang Chủ</a></li>
-              <li class="breadcrumb-item active">Quản lí nạp coins</li>
+              <li class="breadcrumb-item active">Quản lí tài khoản</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,10 +31,10 @@
                 </th> -->
                 <th style="width: 5%">
                 </th>
-                <th style="width: 10%">
+                <th style="width: 8%">
                     ID User
                 </th>
-                <th style="width: 10%">
+                <th style="width: 15%">
                     Tên tài khoản
                 </th>
                 <th style="width: 10%">
@@ -47,9 +47,12 @@
                     Tel
                 </th>
                 <th style="width: 10%">
+                    Coins
+                </th>
+                <th style="width: 10%">
                     Role
                 </th>
-                <th style="width: 15%">
+                <th style="width: 20%">
                     Chức năng
                 </th>
                 <!-- <th style="width: 20%">
@@ -70,6 +73,7 @@
                 <td>'.$Password.'</td>
                 <td>'.$Email.'</td>
                 <td>'.$Tel.'</td>
+                <td>$'.$Coins.'</td>
                 <td>'.$Role.'</td>
                 <td class="project-actions text-right">
                     <a class="btn btn-info btn-sm" href="index.php?act=khoiphuctk&ID_User='.$ID_User.'">
