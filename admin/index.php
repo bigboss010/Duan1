@@ -182,6 +182,9 @@
                     //$listbinhluan = loadall_binhluan();
                     include "view/binhluan.php";
                     break;
+            case "thongke":
+                include "view/thongke.php";
+                break;
            
     }   
     }else{

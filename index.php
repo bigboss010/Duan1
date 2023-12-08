@@ -14,6 +14,15 @@
     if(isset($_GET['act'])&&($_GET['act']!="")){
         $act=$_GET['act'];
         switch($act){
+            case "timkiem":
+                if(isset($_POST['kyw']) && ($_POST['kyw'] != "")){
+                    $kyw = $_POST['kyw'];
+                }else{
+                    $kyw = "";
+                }
+                $tktintuc = loadall_timkiemusser($kyw);
+                include "user/view/timkiem.php";
+                break;
             case "goidangtin":
                 $dsgdt = loadall_goidangtin();
                 include "user/view/goidangtin.php";
@@ -25,8 +34,6 @@
             case "muagoi":
                 if(isset($_GET['ID_GoiDangTin']) && $_GET['ID_GoiDangTin'] > 0){
                     $goidangtin = loadone_goidangtin($_GET['ID_GoiDangTin']);
-                    // $sanphamcl = load_sanpham_cungloai($_GET['idsp'], $sanpham['iddm']);
-                    // $binhluan = loadall_binhluan($_GET['idsp']);
                     include "user/view/muagoi.php";
                 }else{
                     include "user/view/goidangtin.php";            
@@ -78,8 +85,7 @@
             case "chitiettintuc":
                 if(isset($_GET['ID_TinTuc']) && $_GET['ID_TinTuc'] > 0){
                     $tintuc = loadone_tintuc($_GET['ID_TinTuc']);
-                    // $sanphamcl = load_sanpham_cungloai($_GET['idsp'], $sanpham['iddm']);
-                    // $binhluan = loadall_binhluan($_GET['idsp']);
+                    update_luotxem($_GET['ID_TinTuc']);
                     include "user/view/chitiettintuc.php";
                 }else{
                     include "user/view/baiviet.php";            
@@ -172,7 +178,7 @@
                     update_taikhoan($ID_User, $Username, $Email, $Tel, $AnhDaiDien);
                     $thongbao = "Cập nhật thành công";
                 }
-                include "http://localhost/duan1/index.php?act=trangcanhan";
+                include "user/view/edit_profile.php";
                 break;
             case "quenmk":
                 if (isset($_POST['guiemail'])) {

@@ -73,11 +73,9 @@
 
     <?php
     $ID_User = $_SESSION['Username']['ID_User']; 
-    $Username = $_SESSION['Username']['Username'];
-    $Email = $_SESSION['Username']['Email'];
-    $Tel = $_SESSION['Username']['Tel'];
     $dstt = loadall_tintuccanhan($ID_User);
     $socoins = loadall_lscoins($ID_User);
+    $tk = loadone_taikhoan($ID_User);
     ?>
 
     <h2>Trang Cá Nhân - <?php echo $Username; ?></h2>
@@ -129,7 +127,8 @@
                 <td><?php echo '<img src="upload/'.$HinhAnhTin.'" width="50px" alt="">'; ?></td>
                 <td><?php echo $NgayDangTin; ?></td>
                 <td><?php echo $TrangThai; ?></td>
-                <td><button class="btn btn-info btn-sm"><a href="index.php?act=edit_tintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Sửa</a></button><hr>
+                <td><button class="btn btn-primary btn-sm"><a href="index.php?act=chitiettintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">xem</a></button><hr>
+                <button class="btn btn-info btn-sm"><a href="index.php?act=edit_tintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Sửa</a></button><hr>
                 <button class="btn btn-danger btn-sm"><a href="index.php?act=xoatintuc&ID_TinTuc=<?php echo $ID_TinTuc;?>">Xóa</a></button></td>
             </tr>
         <?php } ?>

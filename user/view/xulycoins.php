@@ -15,7 +15,10 @@
                         $coinsUpdate = tinhCoins($Coins,$ID_User);       
                         $MuaGoi = duyetMuaGoi($ID_GoiDangTin);
                         $result = duyetMuaHang($ID_User, $ID_GoiDangTin, $NgayMua);
-                        include "thanhtoantc.php";  
+                        echo '<script>
+                        window.location.href = "index.php?act=thanhtoantc";
+                      </script>';
+                        
                     }else{
                         echo '<div class="container">
                         <div class="breadcrumb-area">

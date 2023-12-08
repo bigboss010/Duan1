@@ -7,6 +7,29 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+      
+      #e{
+          background-color: #FF9999;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
         .box_items {
     display: inline-block;
     width: 30%; /* Điều chỉnh chiều rộng của mỗi gói theo ý muốn */
@@ -75,26 +98,25 @@
                 <div class="col-md-12">
 					        <h1 class="theme-breacrumb-title">Nạp coins</h1><br>
                     
-                    <form onsubmit="return comfirm('Xác nhận đặt hàng')" target="_blank" enctype="application/x-www-form-urlencoded" action="thanhtoan.php" method="post">
-                        <div class="row2 mb10">
-                            <label>Số tiền muốn nạp:</label> <br>
-                            <input type="text" name="SoTien" id="SoTien" placeholder="Mời nhập vào số tiền muốn nạp" oninput="nhapCoins()">
-                        </div>
-                                <input type="hidden" name="ID_User"  value="<?php echo $_SESSION['Username']['ID_User']?>">
-                          <div class="row2 mb10">
-                            <label>Coins:</label> <br>
-                            <input type="text" name="Coins" id="Coins" placeholder="0" readonly>
-                          </div><br>
-                            <button type="submit" name="cod">Thanh toán COD</button><br><br>
-                          <button type="submit" name="momo">Thanh toán MOMO</button><br><br>
-                          <button type="submit" name="redirect">Thanh toán VNPAY</button>
-                      <!-- <input  class="mr20" type="reset" value="Nhập Lại"> -->
-                        <?php
-                          if(isset($thanhcong) && ($thanhcong!="")){
-                            echo $thanhcong;
-                          }
-                        ?>
-                    </form>
+                            <form onsubmit="return confirm('Xác nhận nạp tiền')" target="_blank" enctype="application/x-www-form-urlencoded" action="thanhtoan.php" method="post" onsubmit="return validateForm()">
+                                <div class="row2 mb10">
+                                    <label>Số tiền muốn nạp:</label> <br>
+                                    <input type="text" name="SoTien" id="SoTien" placeholder="Mời nhập vào số tiền muốn nạp" oninput="nhapCoins()" required>
+                                </div>
+                                <input type="hidden" name="ID_User" value="<?php echo $_SESSION['Username']['ID_User']?>">
+                                <div class="row2 mb10">
+                                    <label>Coins:</label>
+                                    <input type="text" name="Coins" id="Coins" placeholder="0" readonly>
+                                </div>
+                                <button class="btn btn-danger btn-sm" type="submit" name="momo">Thanh toán MOMO</button>
+                                <button class="btn btn-info btn-sm" type="submit" name="redirect">Thanh toán VNPAY</button>
+
+                                <?php
+                                if(isset($thanhcong) && ($thanhcong!="")){
+                                    echo $thanhcong;
+                                }
+                                ?>
+                            </form>
                         <script>
                           function nhapCoins() {
                             var soTien = document.getElementById("SoTien").value;
@@ -102,7 +124,22 @@
                             var coins = soTien / doi;
                             document.getElementById("Coins").value = coins;
                           }
-                        </script>                
+                        </script>     
+                        <script>
+                            function validateForm() {
+                                var soTien = document.getElementById('SoTien').value;
+
+                                // Check if a valid amount is entered
+                                if (isNaN(soTien) || soTien <= 0) {
+                                    alert('Vui lòng nhập số tiền hợp lệ.');
+                                    return false;
+                                }
+
+                                // Add any other validation logic as needed
+
+                                return true;
+                            }
+                        </script>           
                           <?php  } ?>
             
 				        </div>

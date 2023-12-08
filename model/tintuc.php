@@ -14,7 +14,7 @@
         tk.AnhDaiDien
     FROM tin_tuc tt
     JOIN danh_muc_tin dm ON tt.ID_DanhMuc = dm.ID_DanhMuc
-    JOIN tai_khoan tk ON tt.ID_User = tk.ID_User where 1 order by ID_TinTuc desc limit 0,9";
+    JOIN tai_khoan tk ON tt.ID_User = tk.ID_User where 1 order by ID_TinTuc desc";
         $listtintuc=pdo_query($sql);
         return  $listtintuc;
     }
@@ -238,5 +238,75 @@
         return $listtintuc;
     }
     
+    function loadall_timkiemusser($kyw=""){
+        $sql="SELECT 
+        dm.TenDanhMuc,
+        tt.ID_TinTuc,
+        tt.TieuDeTin,
+        tt.NgayDangTin,
+        tt.HinhAnhTin,
+        tt.NoiDungTin,
+        tt.LuotXem,
+        tk.Username,
+        tk.AnhDaiDien
+    FROM tin_tuc tt
+    JOIN danh_muc_tin dm ON tt.ID_DanhMuc = dm.ID_DanhMuc
+    JOIN tai_khoan tk ON tt.ID_User = tk.ID_User where TrangThai = 'Đã duyệt'"; 
+    if($kyw != ""){
+        $sql.= " and (tt.TieuDeTin like '%".$kyw."%' or dm.TenDanhMuc like '%".$kyw."%') ";
+    }
+    $sql.="order by tt.ID_TinTuc desc limit 0,9";
+    $listtintuc=pdo_query($sql);
+    return  $listtintuc;
+    }
+
+    function update_luotxem($ID_TinTuc){
+        $sql="update tin_tuc set  LuotXem = LuotXem + 1 where ID_TinTuc =".$ID_TinTuc;
+        pdo_execute($sql);
+    }
+
+   
+    function thongkebaidang_thang(){
+        try {
+            // Your existing logic to fetch monthly post data
+            $sqlMonthlyPostCount = "SELECT DATE_FORMAT(NgayDangTin, '%Y-%m') as Thang, COUNT(*) as SoLuong FROM tin_tuc GROUP BY Thang";
+            $monthlyPostCounts = pdo_query($sqlMonthlyPostCount);
+    
+            // Format data for the chart
+            $labels = [];
+            $thisMonthData = [];
+            $lastMonthData = [];
+    
+            foreach ($monthlyPostCounts as $row) {
+                $labels[] = $row['Thang'];
+                $thisMonthData[] = $row['SoLuong'];
+                $lastMonthData[] = 0; // You may adjust this based on your actual logic
+            }
+    
+            // Return the data as an associative array
+            return [
+                'labels' => $labels,
+                'thisMonthData' => $thisMonthData,
+                'lastMonthData' => $lastMonthData,
+                'monthlyPostCount' => array_sum($thisMonthData)
+            ];
+        } catch (Exception $e) {
+            // Log the error or handle it as appropriate for your application
+            return [];
+        }
+    }
+    
+    
+
+
+    
+
+//     // Trong file statistics.php hoặc nơi khác
+// // Số lượng bài đăng theo ngày
+// $sqlDailyPostCount = "SELECT NgayDangTin, COUNT(*) as SoLuong FROM tin_tuc GROUP BY NgayDangTin";
+// $dailyPostCounts = pdo_query($sqlDailyPostCount);
+
+
+
 
 ?>

@@ -43,6 +43,9 @@
                 <th style="width: 10%">
                     Ảnh
                 </th>
+                <th style="width: 10%">
+                    Lượt xem
+                </th>
                 <th style="width: 8%">
                     Trạng thái
                 </th>
@@ -68,6 +71,7 @@
                     <td>'.$Username.'</td>    
                     <td>'.$TieuDeTin.'</td>
                     <td><img class="w-100" src="../upload/'.$HinhAnhTin.'" height="100px" alt=""></td>
+                    <td><p >'.$LuotXem.'</p></td>
                     <td><p >'.$TrangThai.'</p></td>
                     <td><p >'.$XoaMem.'</p></td>
                     <td class="project-actions text-right">

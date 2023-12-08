@@ -83,7 +83,7 @@ if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
     if (is_array($checkuser)) {
         $_SESSION['Username'] = $checkuser;
         if ($_SESSION['Username']['Role'] == 1) {
-            header("Location: ../../admin/index.php");
+            header("Location: ../../admin/index.php?act=thongke");
             exit(); 
         } elseif ($_SESSION['Username']['Role'] == 2) {
             echo "Tài khoản của bạn đã bị khóa, vui lòng liên hệ đội ngũ admin để biết thêm chi tiết!";

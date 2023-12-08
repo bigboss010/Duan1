@@ -35,11 +35,11 @@
     </div>
     <!-- search popup area start -->
     <div class="search-popup" id="search-popup">
-        <form action="https://wowtheme7.com/tf/kiante/home.html" class="search-form">
+        <form action="index.php?act=timkiem" method="post" class="search-form">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search.....">
+                <input type="text" name="kyw" class="form-control" placeholder="Tìm kiếm.....">
             </div>
-            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+            <button type="submit" name="timkiem" class="submit-btn"><i class="fa fa-search"></i></button>
         </form>
     </div>
     <!-- //. search Popup -->
@@ -92,7 +92,7 @@
                                
                                 <?php
                                     if($_SESSION['Username']['Role'] == 1){
-                                        $linkadmin = "admin/index.php";
+                                        $linkadmin = "admin/index.php?act=thongke";
                                         // $linkuser = "index.php?act=dangtin&ID_GoiDangTin=$ID_GoiDangTin";
                                        echo "<button class='btn btn-primary btn-block'><a href='".$linkadmin."'>Đến Admin</a></button>";
                                     }else{
@@ -121,7 +121,7 @@
                 <a class="main-logo" href="index.php"><img src="assets/img/anh.jpg" alt="img"></a>
                 <div class="responsive-mobile-menu">
                     <div class="logo d-lg-none d-block">
-                        <a class="main-logo" href="home.html"><img src="assets/img/logo.png" alt="img"></a>
+                        <a class="main-logo" href="index.php"><img src="assets/img/logo.png" alt="img"></a>
                     </div>
                     <button class="menu toggle-btn d-block d-lg-none" data-target="#miralax_main_menu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-left"></span>

@@ -1,3 +1,22 @@
+<style>
+    .search-form1 {
+    display: flex;
+    align-items: center;
+}
+
+.search-form1 input {
+    margin-right: 5px; /* Adjust margin as needed */
+}
+
+.search-form1 button {
+    padding: 8px 12px; /* Adjust padding as needed */
+    background-color: #007bff; /* Add your preferred background color */
+    color: #fff; /* Add your preferred text color */
+    border: none;
+    cursor: pointer;
+}
+
+</style>
 <div class="col-lg-4">
                     <div class="side-area">
                         <div class="widget widget_search">
@@ -5,8 +24,10 @@
                                 Tìm kiếm
                             </h5>
                             <div class="subscribe-inner">
-                                <input type="text">
-                                <button class="btn">Tìm kiếm</button>
+                            <form action="index.php?act=timkiem" method="post" class="search-form1">
+                                <input type="text" name="kyw" placeholder="Tìm kiếm.....">
+                                <button type="submit" name="timkiem" class="btn">Tìm kiếm</button>      
+                            </form>
                             </div>
                         </div>
                         <div class="widget widget_list mt-5">
